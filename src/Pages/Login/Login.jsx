@@ -4,7 +4,8 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../Providers/AuthProviders";
 import { useForm } from "react-hook-form";
-import { HiEye, HiEyeOff } from "react-icons/hi"; // Import icons for password visibility toggle
+import { HiEye, HiEyeOff } from "react-icons/hi"; 
+import SocialLogin from "../Shared/SocialLogin";
 
 const Login = () => {
   const {
@@ -14,7 +15,6 @@ const Login = () => {
   } = useForm();
 
   const { signIn } = useContext(AuthContext);
-
   const [errorMessage, setErrorMessage] = useState(""); // State variable for error message
   const [showPassword, setShowPassword] = useState(false); // State variable for password visibility
 
@@ -111,6 +111,7 @@ const Login = () => {
               </Link>{" "}
             </small>
           </p>
+          <SocialLogin></SocialLogin>
         </div>
       </div>
     </>

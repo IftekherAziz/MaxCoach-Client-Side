@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { HiEye, HiEyeOff } from "react-icons/hi";
 import { AuthContext } from "../../Providers/AuthProviders";
 import Swal from "sweetalert2";
+import SocialLogin from "../Shared/SocialLogin";
 
 const SignUp = () => {
   const {
@@ -202,6 +203,7 @@ const SignUp = () => {
                 </Link>{" "}
               </small>
             </p>
+            <SocialLogin></SocialLogin>
           </div>
         </div>
       </div>
