@@ -1,45 +1,57 @@
+import  { useContext, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { useContext } from "react";
-import Swal from "sweetalert2";
+import { HiEye, HiEyeOff } from "react-icons/hi";
 import { AuthContext } from "../../Providers/AuthProviders";
+import Swal from "sweetalert2";
 
 const SignUp = () => {
   const {
     register,
     handleSubmit,
     reset,
+    watch,
     formState: { errors },
   } = useForm();
 
-  const { createUser, updateUserProfile } = useContext(AuthContext);
+    const { createUser, updateUserProfile } = useContext(AuthContext);
 
   const navigate = useNavigate();
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
-  const onSubmit = (data) => {
-    // console.log(data);
+   const onSubmit = (data) => {
+     createUser(data.email, data.password)
+       .then((userCredential) => {
+         const user = userCredential.user;
+         console.log(user);
+         updateUserProfile(data.name, data.photo).then(() => {
+           reset();
+           Swal.fire({
+             position: "top-end",
+             icon: "success",
+             title: "User created successfully.",
+             showConfirmButton: false,
+             timer: 1500,
+           });
+         });
+         navigate("/");
+       })
+       .catch((error) => {
+         console.log(error);
+       });
+   };
 
-    createUser(data.email, data.password)
-      .then((userCredential) => {
-        const user = userCredential.user;
-        console.log(user);
-        updateUserProfile(data.name, data.photo).then(() => {
-        //   console.log("Profile updated");
-          reset();
-          Swal.fire({
-            position: "top-end",
-            icon: "success",
-            title: "User created successfully.",
-            showConfirmButton: false,
-            timer: 1500,
-          });
-        });
-        navigate("/");
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+
+  const password = watch("password");
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+
+  const toggleConfirmPasswordVisibility = () => {
+    setShowConfirmPassword(!showConfirmPassword);
   };
 
   return (
@@ -108,17 +120,26 @@ const SignUp = () => {
                 <label className="label">
                   <span className="label-text">Password</span>
                 </label>
-                <input
-                  type="password"
-                  {...register("password", {
-                    required: true,
-                    minLength: 6,
-                    maxLength: 20,
-                    pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/,
-                  })}
-                  placeholder="Password"
-                  className="input input-bordered"
-                />
+                <div className="relative">
+                  <input
+                    type={showPassword ? "text" : "password"}
+                    {...register("password", {
+                      required: true,
+                      minLength: 6,
+                      maxLength: 20,
+                      pattern:
+                        /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/,
+                    })}
+                    placeholder="Password"
+                    className="input input-bordered w-full"
+                  />
+                  <span
+                    className="absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer"
+                    onClick={togglePasswordVisibility}
+                  >
+                    {showPassword ? <HiEyeOff /> : <HiEye />}
+                  </span>
+                </div>
                 {errors.password?.type === "required" && (
                   <p className="text-red-600">Password is required</p>
                 )}
@@ -136,11 +157,34 @@ const SignUp = () => {
                     and one special character.
                   </p>
                 )}
+              </div>
+              <div className="form-control">
                 <label className="label">
-                  <a href="#" className="label-text-alt link link-hover">
-                    Forgot password?
-                  </a>
+                  <span className="label-text">Confirm Password</span>
                 </label>
+                <div className="relative">
+                  <input
+                    type={showConfirmPassword ? "text" : "password"}
+                    {...register("confirmPassword", {
+                      required: true,
+                      validate: (value) => value === password,
+                    })}
+                    placeholder="Confirm Password"
+                    className="input input-bordered w-full"
+                  />
+                  <span
+                    className="absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer"
+                    onClick={toggleConfirmPasswordVisibility}
+                  >
+                    {showConfirmPassword ? <HiEyeOff /> : <HiEye />}
+                  </span>
+                </div>
+                {errors.confirmPassword?.type === "required" && (
+                  <p className="text-red-600">Confirm Password is required</p>
+                )}
+                {errors.confirmPassword?.type === "validate" && (
+                  <p className="text-red-600">Passwords do not match</p>
+                )}
               </div>
               <div className="form-control mt-6">
                 <input
