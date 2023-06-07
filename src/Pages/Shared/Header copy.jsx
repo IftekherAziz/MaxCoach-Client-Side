@@ -1,38 +1,23 @@
-import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { AuthContext } from "../../Providers/AuthProviders";
+
+const menuItems = (
+  <>
+    <li>
+      <NavLink to="/">Home</NavLink>
+    </li>
+    <li>
+      <NavLink to="/instructors">Instructors</NavLink>
+    </li>
+    <li>
+      <NavLink to="/classes">Classes</NavLink>
+    </li>
+    <li>
+      <NavLink to="/dashboard">Dashboard</NavLink>
+    </li>
+  </>
+);
 
 const Header = () => {
-  const { user, logOut } = useContext(AuthContext);
-
-  // Handle logout:
-  const handleLogout = () => {
-    logOut()
-      .then(() => {})
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
-  const menuItems = (
-    <>
-      <li>
-        <NavLink to="/">Home</NavLink>
-      </li>
-      <li>
-        <NavLink to="/instructors">Instructors</NavLink>
-      </li>
-      <li>
-        <NavLink to="/classes">Classes</NavLink>
-      </li>
-      {user && user.email && (
-        <li>
-          <NavLink to="/dashboard">Dashboard</NavLink>
-        </li>
-      )}
-    </>
-  );
-
   return (
     <div className="shadow-sm bg-white mb-5">
       <div className="max-w-7xl mx-auto">
@@ -75,24 +60,22 @@ const Header = () => {
           </div>
 
           <div className="navbar-end mr-4">
-            {user ? (
-              <>
-                <button
-                  onClick={handleLogout}
-                  className="btn btn-sm btn-neutral"
-                >
-                  Logout
-                </button>
-              </>
-            ) : (
-              <>
-                <Link to="/login" className="btn btn-sm btn-neutral">
-                  Login
-                </Link>
-              </>
-            )}
             <div>
-              <input type="checkbox" className="toggle ml-5" />
+              <li className="list-none">
+                <Link to="/login">
+                  <button className="btn rounded mr-4">Login</button>
+                </Link>
+              </li>
+            </div>
+            <div>
+              <label className="btn btn-ghost btn-circle avatar tooltip tooltip-bottom">
+                <div className="rounded-full border">
+                  <img src="https://i.ibb.co/sRWsQmR/6073873.png" alt="Image" />
+                </div>
+              </label>
+            </div>
+            <div>
+              <input type="checkbox" className="toggle ml-5"  />
             </div>
           </div>
         </div>
