@@ -8,13 +8,14 @@ import {
   updateProfile,
 } from "firebase/auth";
 // import { app } from "../firebase/firebase.config";
-import { app } from "../firebase/firebase.config";
+import {app} from "../firebase/firebase.config";
 
 export const AuthContext = createContext(null);
 
 const auth = getAuth(app);
 
 const AuthProvider = ({ children }) => {
+
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -44,7 +45,7 @@ const AuthProvider = ({ children }) => {
     });
   };
 
-  // Check if user is logged in or not
+  // Check if user is logged in or not 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);

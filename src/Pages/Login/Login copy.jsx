@@ -1,12 +1,12 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../Providers/AuthProviders";
 import { useForm } from "react-hook-form";
-import { HiEye, HiEyeOff } from "react-icons/hi"; // Import icons for password visibility toggle
 
 const Login = () => {
+
   const {
     register,
     handleSubmit,
@@ -15,38 +15,31 @@ const Login = () => {
 
   const { signIn } = useContext(AuthContext);
 
-  const [errorMessage, setErrorMessage] = useState(""); // State variable for error message
-  const [showPassword, setShowPassword] = useState(false); // State variable for password visibility
-
   const navigate = useNavigate();
   const location = useLocation();
-
+  
   const from = location.state?.from?.pathname || "/";
 
   // User login with email and password
   const handleLogin = (data) => {
+  
     // Sign in user with email and password
     signIn(data.email, data.password)
       .then((userCredential) => {
         const user = userCredential.user;
         console.log(user);
-        Swal.fire({
-          position: "top-end",
-          icon: "success",
-          title: "Login successfully.",
-          showConfirmButton: false,
-          timer: 1500,
-        });
+         Swal.fire({
+           position: "top-end",
+           icon: "success",
+           title: "Login successfully.",
+           showConfirmButton: false,
+           timer: 1500,
+         });
         navigate(from, { replace: true });
       })
       .catch((error) => {
         console.log(error);
-        setErrorMessage("Invalid email or password"); // Set the error message
-      });
-  };
-
-  const togglePasswordVisibility = () => {
-    setShowPassword((prevState) => !prevState); // Toggle the password visibility state
+      })
   };
 
   return (
@@ -55,11 +48,8 @@ const Login = () => {
         <title>MaxCoach | Login</title>
       </Helmet>
       <div className="p-10 m-10">
-        <div className="max-w-md bg-zinc-50 mx-auto border shadow-xl">
+        <div className=" max-w-md bg-zinc-50 mx-auto border shadow-xl">
           <form onSubmit={handleSubmit(handleLogin)} className="card-body">
-            {errorMessage && (
-              <div className="text-red-600">{errorMessage}</div> // Display the error message
-            )}
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Email</span>
@@ -79,22 +69,12 @@ const Login = () => {
               <label className="label">
                 <span className="label-text">Password</span>
               </label>
-              <div className="relative">
-                <input
-                  type={showPassword ? "text" : "password"}
-                  {...register("password", { required: true })}
-                  placeholder="Password"
-                  className="input input-bordered w-full "
-                />
-                <button
-                  type="button"
-                  onClick={togglePasswordVisibility}
-                  className="absolute top-1/2 transform -translate-y-1/2 right-3 focus:outline-none"
-                >
-                  {showPassword ? <HiEyeOff /> : <HiEye />}{" "}
-                  {/* Icon for password visibility toggle */}
-                </button>
-              </div>
+              <input
+                type="password"
+                {...register("password", { required: true })}
+                placeholder="Password"
+                className="input input-bordered"
+              />
               {errors.password && (
                 <span className="text-red-600">Password is required</span>
               )}
