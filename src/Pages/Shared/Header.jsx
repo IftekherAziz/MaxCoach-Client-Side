@@ -49,8 +49,8 @@ const Header = () => {
               </div>
               <Link to="/">
                 <img
-                  className="w-32 h-20"
-                  src="https://i.ibb.co/PmNzCY8/log-removebg-preview.png"
+                  className="w-40"
+                  src="https://i.ibb.co/wp4n6bT/logo.png"
                   alt="Logo"
                 />
               </Link>
@@ -63,9 +63,7 @@ const Header = () => {
               <div>
                 <li className="list-none">
                   <Link to="/login">
-                    <button className="btn rounded mr-4">
-                      Login
-                    </button>
+                    <button className="btn rounded mr-4">Login</button>
                   </Link>
                 </li>
               </div>
