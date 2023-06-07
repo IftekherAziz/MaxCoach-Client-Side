@@ -75,24 +75,46 @@ const Header = () => {
           </div>
 
           <div className="navbar-end mr-4">
-            {user ? (
-              <>
-                <button
-                  onClick={handleLogout}
-                  className="btn btn-sm btn-neutral"
+            <li className="list-none">
+              {user ? (
+                <>
+                  <button
+                    onClick={handleLogout}
+                    className="btn btn-sm btn-neutral mr-4"
+                  >
+                    Logout
+                  </button>
+                </>
+              ) : (
+                <>
+                  <Link to="/login" className="btn btn-sm btn-neutral mr-4">
+                    Login
+                  </Link>
+                </>
+              )}
+            </li>
+            {user && (
+              <div>
+                <label
+                  className="btn btn-ghost btn-circle avatar tooltip tooltip-bottom"
+                  data-tip={user?.displayName}
                 >
-                  Logout
-                </button>
-              </>
-            ) : (
-              <>
-                <Link to="/login" className="btn btn-sm btn-neutral">
-                  Login
-                </Link>
-              </>
+                  <div className="rounded-full border ">
+                    {user?.photoURL ? (
+                      <img src={user.photoURL} alt="Image"  />
+                    ) : (
+                      <img
+                        src="https://i.ibb.co/sRWsQmR/6073873.png"
+                        alt="Image"
+                      
+                      />
+                    )}
+                  </div>
+                </label>
+              </div>
             )}
             <div>
-              <input type="checkbox" className="toggle ml-5" />
+              <input type="checkbox" className="toggle ml-3"  />
             </div>
           </div>
         </div>
