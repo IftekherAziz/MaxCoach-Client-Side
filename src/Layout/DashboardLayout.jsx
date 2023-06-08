@@ -38,9 +38,9 @@ const DashboardLayout = () => {
           </div>
           <div className="drawer-side">
             <label htmlFor="my-drawer" className="drawer-overlay"></label>
-            <ul className="menu p-4 w-60 h-full bg-zinc-50 shadow-xl text-black">
+            <ul className="menu p-4 w-60 h-full  bg-zinc-50  shadow-xl text-black">
               {/* Sidebar content here */}
-              <div className="text-2xl font-medium">Dashboard</div>
+              <div className="text-2xl font-medium ml-1">Dashboard</div>
               <div className="divider"></div>
               <li className="mb-1">
                 <NavLink to="/dashboard/manage-classes">

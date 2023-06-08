@@ -15,6 +15,7 @@ import EnrolledClasses from "../Pages/Dashboard/Student/EnrolledClasses";
 import SelectedClasses from "../Pages/Dashboard/Student/SelectedClasses";
 import Payment from "../Pages/Dashboard/Student/Payment";
 import PaymentHistory from "../Pages/Dashboard/Student/PaymentHistory";
+import PrivateRoute from "./PrivateRoute";
 
 export const router = createBrowserRouter([
   {
@@ -46,43 +47,44 @@ export const router = createBrowserRouter([
   },
   {
     path: "dashboard",
-    element: <DashboardLayout></DashboardLayout>, 
+    element: (
+      <PrivateRoute>
+        <DashboardLayout></DashboardLayout>
+      </PrivateRoute>
+    ),
     children: [
       {
         path: "manage-classes",
-        element: <ManageClasses></ManageClasses>
+        element: <ManageClasses></ManageClasses>,
       },
       {
         path: "manage-users",
-        element: <ManageUsers></ManageUsers>
+        element: <ManageUsers></ManageUsers>,
       },
       {
         path: "Add-class",
-        element: <AddAClass></AddAClass>
+        element: <AddAClass></AddAClass>,
       },
       {
         path: "my-classes",
-        element: <MyClasses></MyClasses>
+        element: <MyClasses></MyClasses>,
       },
       {
         path: "enrolled-classes",
-        element: <EnrolledClasses></EnrolledClasses>
+        element: <EnrolledClasses></EnrolledClasses>,
       },
       {
         path: "selected-classes",
-        element: <SelectedClasses></SelectedClasses>
+        element: <SelectedClasses></SelectedClasses>,
       },
       {
         path: "payment",
-        element: <Payment></Payment>
+        element: <Payment></Payment>,
       },
       {
         path: "Payment-history",
-        element: <PaymentHistory></PaymentHistory>
+        element: <PaymentHistory></PaymentHistory>,
       },
     ],
-  }
-  
+  },
 ]);
-
-

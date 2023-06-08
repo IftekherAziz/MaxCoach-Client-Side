@@ -8,7 +8,7 @@ import { Pagination, Navigation } from "swiper";
 const Slider = () => {
   return (
     <>
-      <div className="">
+      <div className="mt-2">
         <Swiper
           slidesPerView={1}
           spaceBetween={30}
@@ -27,10 +27,10 @@ const Slider = () => {
               alt=""
             />
             <div className="text-overlay">
-              <h2 className="text-5xl md:text-7xl mb-5 font-bold">
+              <h2 className="text-4xl md:text-7xl mb-5 font-bold">
                 Michael Rodriguez
               </h2>
-              <p className="my-3 max-w-sm md:max-w-4xl mx-auto text-center">
+              <p className=" max-w-sm md:max-w-4xl mx-auto text-center">
                 Michael Rodriguez is a renowned portrait photographer with a
                 passion for capturing the essence and emotions of his subjects.
                 Join Michael's classes to master the art of capturing
@@ -46,10 +46,10 @@ const Slider = () => {
               alt=""
             />
             <div className="text-overlay">
-              <h2 className="text-5xl md:text-7xl mb-5 font-bold">
+              <h2 className="text-4xl md:text-7xl mb-5 font-bold">
                 Emily Johnson
               </h2>
-              <p className="my-3 max-w-sm md:max-w-4xl mx-auto text-center">
+              <p className="max-w-sm md:max-w-4xl mx-auto text-center">
                 Her classes provide valuable insights into composition,
                 lighting, and post-processing techniques. Whether you're a
                 beginner or an experienced photographer, Emily's classes will
@@ -65,10 +65,10 @@ const Slider = () => {
               alt=""
             />
             <div className="text-overlay ">
-              <h2 className="text-5xl md:text-7xl mb-5 font-bold">
+              <h2 className="text-4xl md:text-7xl mb-5 font-bold">
                 Sarah Thompson
               </h2>
-              <p className="my-3 max-w-sm md:max-w-4xl mx-auto text-center">
+              <p className=" max-w-sm md:max-w-4xl mx-auto text-center">
                 Sarah's classes offer valuable insights and practical tips to
                 photographers interested in documenting the essence of city
                 life. Join Sarah's classes to explore the art of street
