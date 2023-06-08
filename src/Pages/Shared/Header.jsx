@@ -2,21 +2,25 @@ import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProviders";
 import Swal from "sweetalert2";
+import useUser from "../../Hooks/useUser";
 
 const Header = () => {
   const { user, logOut, theme, setTheme } = useContext(AuthContext);
+
+  const [userFromDB] = useUser();
+  const role = userFromDB?.role;
 
   // Handle logout:
   const handleLogout = () => {
     logOut()
       .then(() => {
-         Swal.fire({
-           position: "top-end",
-           icon: "success",
-           title: "Successfully logged out.",
-           showConfirmButton: false,
-           timer: 1500,
-         });
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Successfully logged out.",
+          showConfirmButton: false,
+          timer: 1500,
+        });
       })
       .catch((error) => {
         console.log(error);
@@ -34,10 +38,27 @@ const Header = () => {
       <li>
         <NavLink to="/classes">Classes</NavLink>
       </li>
-      {user && user.email && (
-        <li>
-          <NavLink to="/dashboard">Dashboard</NavLink>
-        </li>
+      {role === "admin" ? (
+        <>
+          {" "}
+          <li>
+            <NavLink to="/dashboard/manage-classes">Dashboard</NavLink>
+          </li>
+        </>
+      ) : role === "instructor" ? (
+        <>
+          {" "}
+          <li>
+            <NavLink to="/dashboard/my-classes">Dashboard</NavLink>
+          </li>
+        </>
+      ) : (
+        <>
+          {" "}
+          <li>
+            <NavLink to="/dashboard/selected-classes">Dashboard</NavLink>
+          </li>
+        </>
       )}
     </>
   );

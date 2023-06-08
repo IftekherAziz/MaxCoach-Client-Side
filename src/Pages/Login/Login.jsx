@@ -28,8 +28,9 @@ const Login = () => {
     // Sign in user with email and password
     signIn(data.email, data.password)
       .then((userCredential) => {
+        // eslint-disable-next-line no-unused-vars
         const user = userCredential.user;
-        console.log(user);
+        // console.log(user);
         Swal.fire({
           position: "top-end",
           icon: "success",
