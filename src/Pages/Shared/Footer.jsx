@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <div className="bg-neutral-50">
+    <div className="border-t">
       <footer className="footer  justify-between max-w-7xl mx-auto py-12 md:px-0 px-6 text-base-content">
         <div>
           <Link to="/">

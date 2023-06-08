@@ -3,7 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProviders";
 
 const Header = () => {
-  const { user, logOut } = useContext(AuthContext);
+  const { user, logOut, theme, setTheme } = useContext(AuthContext);
 
   // Handle logout:
   const handleLogout = () => {
@@ -34,7 +34,7 @@ const Header = () => {
   );
 
   return (
-    <div className="shadow-sm bg-white mb-5">
+    <div className="shadow-sm  mb-5">
       <div className="max-w-7xl mx-auto">
         <div className="navbar ">
           <div className="navbar-start">
@@ -57,7 +57,7 @@ const Header = () => {
               </label>
               <ul
                 tabIndex={0}
-                className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+                className=" menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
               >
                 {menuItems}
               </ul>
@@ -101,12 +101,11 @@ const Header = () => {
                 >
                   <div className="rounded-full border ">
                     {user?.photoURL ? (
-                      <img src={user.photoURL} alt="Image"  />
+                      <img src={user.photoURL} alt="Image" />
                     ) : (
                       <img
                         src="https://i.ibb.co/sRWsQmR/6073873.png"
                         alt="Image"
-                      
                       />
                     )}
                   </div>
@@ -114,7 +113,11 @@ const Header = () => {
               </div>
             )}
             <div>
-              <input type="checkbox" className="toggle ml-3"  />
+              <input
+                onClick={() => setTheme(!theme)}
+                type="checkbox"
+                className="toggle ml-3"
+              />
             </div>
           </div>
         </div>

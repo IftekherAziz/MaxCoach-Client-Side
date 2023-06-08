@@ -65,9 +65,13 @@ const AuthProvider = ({ children }) => {
     };
   }, []);
 
+  const [theme, setTheme] = useState(true);
+
   const authInfo = {
     user,
+    theme,
     loading,
+    setTheme,
     createUser,
     signIn,
     logOut,
