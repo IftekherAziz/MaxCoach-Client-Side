@@ -1,11 +1,11 @@
 import { Outlet } from "react-router-dom";
-import Header from "../Pages/Shared/Header";
-import Footer from "../Pages/Shared/Footer";
+// import Header from "../Pages/Shared/Header";
+// import Footer from "../Pages/Shared/Footer";
 
 const DashboardLayout = () => {
   return (
     <div>
-      <Header></Header>
+     {/*  <Header></Header> */}
       <div className="md:min-h-[calc(100vh-350px)] max-w-7xl mx-auto">
         <div className="drawer lg:drawer-open">
           <input id="my-drawer" type="checkbox" className="drawer-toggle" />
@@ -35,7 +35,7 @@ const DashboardLayout = () => {
           </div>
         </div>
       </div>
-      <Footer></Footer>
+     {/*  <Footer></Footer> */}
     </div>
   );
 };

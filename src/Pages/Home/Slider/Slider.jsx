@@ -8,7 +8,7 @@ import { Pagination, Navigation } from "swiper";
 const Slider = () => {
   return (
     <>
-      <div>
+      <div className="">
         <Swiper
           slidesPerView={1}
           spaceBetween={30}
