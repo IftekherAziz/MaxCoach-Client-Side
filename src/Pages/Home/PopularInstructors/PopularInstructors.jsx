@@ -4,6 +4,7 @@
 const PopularInstructors = () => {
     return (
       <section className="mb-12 mx-10 md:mx-0">
+        
         <div>
           <h2 className="text-4xl font-bold text-center mt-20 mb-5">
             Our Popular Instructors

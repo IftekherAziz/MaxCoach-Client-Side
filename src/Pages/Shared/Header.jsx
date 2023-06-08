@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProviders";
+import Swal from "sweetalert2";
 
 const Header = () => {
   const { user, logOut, theme, setTheme } = useContext(AuthContext);
@@ -8,7 +9,15 @@ const Header = () => {
   // Handle logout:
   const handleLogout = () => {
     logOut()
-      .then(() => {})
+      .then(() => {
+         Swal.fire({
+           position: "top-end",
+           icon: "success",
+           title: "Successfully logged out.",
+           showConfirmButton: false,
+           timer: 1500,
+         });
+      })
       .catch((error) => {
         console.log(error);
       });
@@ -34,7 +43,7 @@ const Header = () => {
   );
 
   return (
-    <div className="shadow-sm  mb-5">
+    <div className="shadow-sm">
       <div className="max-w-7xl mx-auto">
         <div className="navbar ">
           <div className="navbar-start">
