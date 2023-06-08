@@ -1,6 +1,6 @@
 
 
-const MyEnrolledClasses = () => {
+const EnrolledClasses = () => {
     return (
         <div>
             <h2>My Enrolled Classes</h2>
@@ -8,4 +8,4 @@ const MyEnrolledClasses = () => {
     );
 };
 
-export default MyEnrolledClasses;
+export default EnrolledClasses;

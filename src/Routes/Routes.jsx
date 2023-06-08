@@ -7,6 +7,14 @@ import Instructors from "../Pages/Instructors/Instructors";
 import Classes from "../Pages/Classes/Classes";
 import Error from "../Pages/Error/Error";
 import DashboardLayout from "../Layout/DashboardLayout";
+import ManageClasses from "../Pages/Dashboard/Admin/ManageClasses";
+import ManageUsers from "../Pages/Dashboard/Admin/ManageUsers";
+import MyClasses from "../Pages/Dashboard/Instructor/MyClasses";
+import AddAClass from "../Pages/Dashboard/Instructor/AddAClass";
+import EnrolledClasses from "../Pages/Dashboard/Student/EnrolledClasses";
+import SelectedClasses from "../Pages/Dashboard/Student/SelectedClasses";
+import Payment from "../Pages/Dashboard/Student/Payment";
+import PaymentHistory from "../Pages/Dashboard/Student/PaymentHistory";
 
 export const router = createBrowserRouter([
   {
@@ -38,7 +46,41 @@ export const router = createBrowserRouter([
   },
   {
     path: "dashboard",
-    element: <DashboardLayout></DashboardLayout>,
+    element: <DashboardLayout></DashboardLayout>, 
+    children: [
+      {
+        path: "manage-classes",
+        element: <ManageClasses></ManageClasses>
+      },
+      {
+        path: "manage-users",
+        element: <ManageUsers></ManageUsers>
+      },
+      {
+        path: "Add-class",
+        element: <AddAClass></AddAClass>
+      },
+      {
+        path: "my-classes",
+        element: <MyClasses></MyClasses>
+      },
+      {
+        path: "enrolled-classes",
+        element: <EnrolledClasses></EnrolledClasses>
+      },
+      {
+        path: "selected-classes",
+        element: <SelectedClasses></SelectedClasses>
+      },
+      {
+        path: "payment",
+        element: <Payment></Payment>
+      },
+      {
+        path: "Payment-history",
+        element: <PaymentHistory></PaymentHistory>
+      },
+    ],
   }
   
 ]);

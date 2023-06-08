@@ -1,5 +1,5 @@
 
-const MySelectedClasses = () => {
+const SelectedClasses = () => {
     return (
         <div>
             <h2>My Selected Classes</h2>
@@ -7,4 +7,4 @@ const MySelectedClasses = () => {
     );
 };
 
-export default MySelectedClasses;
+export default SelectedClasses;
