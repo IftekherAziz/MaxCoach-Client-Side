@@ -42,18 +42,18 @@ const Slider = () => {
           <SwiperSlide>
             <img
               className="max-h-[650px] w-full"
-              src="https://i.ibb.co/Tcxb1cZ/pexels-thiago-2410565.jpg"
+              src="https://cdn.pixabay.com/photo/2016/05/01/19/47/photographer-1365674_640.jpg"
               alt=""
             />
             <div className="text-overlay">
               <h2 className="text-5xl md:text-7xl mb-5 font-bold">
-                Michael Rodriguez
+                Emily Johnson
               </h2>
               <p className="my-3 max-w-sm md:max-w-4xl mx-auto text-center">
-                Michael Rodriguez is a renowned portrait photographer with a
-                passion for capturing the essence and emotions of his subjects.
-                Join Michael's classes to master the art of capturing
-                captivating and expressive portraits.
+                Her classes provide valuable insights into composition,
+                lighting, and post-processing techniques. Whether you're a
+                beginner or an experienced photographer, Emily's classes will
+                inspire you to explore the world.
               </p>
               <button>Get Started</button>
             </div>
@@ -61,18 +61,18 @@ const Slider = () => {
           <SwiperSlide>
             <img
               className="max-h-[650px] w-full "
-              src="https://i.ibb.co/6mvD8ZS/pexels-nappy-1210494.jpg"
+              src="https://cdn.pixabay.com/photo/2020/09/19/12/50/woman-5584377_640.jpg"
               alt=""
             />
-            <div className="text-overlay">
+            <div className="text-overlay ">
               <h2 className="text-5xl md:text-7xl mb-5 font-bold">
-                Michael Rodriguez
+                Sarah Thompson
               </h2>
               <p className="my-3 max-w-sm md:max-w-4xl mx-auto text-center">
-                Michael Rodriguez is a renowned portrait photographer with a
-                passion for capturing the essence and emotions of his subjects.
-                Join Michael's classes to master the art of capturing
-                captivating and expressive portraits.
+                Sarah's classes offer valuable insights and practical tips to
+                photographers interested in documenting the essence of city
+                life. Join Sarah's classes to explore the art of street
+                photography and take your skills to the next level.
               </p>
               <button>Get Started</button>
             </div>
