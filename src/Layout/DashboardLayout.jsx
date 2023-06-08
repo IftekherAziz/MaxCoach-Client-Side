@@ -1,5 +1,3 @@
-// import Header from "../Pages/Shared/Header";
-// import Footer from "../Pages/Shared/Footer";
 import { Outlet } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import {
@@ -13,11 +11,16 @@ import {
   FaHistory,
   FaHome,
 } from "react-icons/fa";
+import useUser from "../Hooks/useUser";
 
 const DashboardLayout = () => {
+  const [userFromDB] = useUser();
+  const role = userFromDB?.role;
+  if (!role) {
+    return <></>;
+  }
   return (
     <div>
-      {/*  <Header></Header> */}
       <div className="min-h-screen max-w-7xl mx-auto">
         <div className="drawer lg:drawer-open">
           <input id="my-drawer" type="checkbox" className="drawer-toggle" />
@@ -36,62 +39,84 @@ const DashboardLayout = () => {
               <Outlet></Outlet>
             </div>
           </div>
-          <div className="drawer-side">
+          <div className="drawer-side ">
             <label htmlFor="my-drawer" className="drawer-overlay"></label>
-            <ul className="menu p-4 w-60 h-full  bg-zinc-50  shadow-xl text-black">
+            <ul className="menu p-4 w-80 h-screen   bg-zinc-50  shadow-xl text-black">
               {/* Sidebar content here */}
               <div className="text-2xl font-medium ml-1">Dashboard</div>
               <div className="divider"></div>
-              <li className="mb-1">
-                <NavLink to="/dashboard/manage-classes">
-                  <FaSchool></FaSchool>Manage Classes
-                </NavLink>
-              </li>
-              <li className="mb-1">
-                <NavLink to="/dashboard/manage-users">
-                  <FaUsers></FaUsers> Manage Users
-                </NavLink>
-              </li>
-              <li className="mb-1">
-                <NavLink to="/dashboard/add-class">
-                  <FaLandmark></FaLandmark>Add A Class
-                </NavLink>
-              </li>
-              <li className="mb-1">
-                <NavLink to="/dashboard/my-classes">
-                  <FaLayerGroup></FaLayerGroup>My Classes
-                </NavLink>
-              </li>
-              <li className="mb-1">
-                <NavLink to="/dashboard/enrolled-classes">
-                  <FaBookReader></FaBookReader>Enrolled Classes
-                </NavLink>
-              </li>
-              <li className="mb-1">
-                <NavLink to="/dashboard/selected-classes">
-                  <FaBookmark></FaBookmark>Selected Classes
-                </NavLink>
-              </li>
-              <li className="mb-1">
-                <NavLink to="/dashboard/payment">
-                  <FaDonate></FaDonate>Make Payment
-                </NavLink>
-              </li>
-              <li className="mb-1">
-                <NavLink to="/dashboard/Payment-history">
-                  <FaHistory></FaHistory>Payment History
-                </NavLink>
-              </li>
-              <li className="mb-1">
-                <NavLink to="/">
-                  <FaHome></FaHome>Back to Home
-                </NavLink>
-              </li>
+              {role === "admin" ? (
+                <>
+                  <li className="mb-1">
+                    <NavLink to="/dashboard/manage-classes">
+                      <FaSchool></FaSchool>Manage Classes
+                    </NavLink>
+                  </li>
+                  <li className="mb-1">
+                    <NavLink to="/dashboard/manage-users">
+                      <FaUsers></FaUsers> Manage Users
+                    </NavLink>
+                  </li>
+                </>
+              ) : role === "instructor" ? (
+                <>
+                  <li className="mb-1">
+                    <NavLink to="/dashboard/add-class">
+                      <FaLandmark></FaLandmark>Add A Class
+                    </NavLink>
+                  </li>
+                  <li className="mb-1">
+                    <NavLink to="/dashboard/my-classes">
+                      <FaLayerGroup></FaLayerGroup>My Classes
+                    </NavLink>
+                  </li>
+                </>
+              ) : (
+                <>
+                  <li className="mb-1">
+                    <NavLink to="/dashboard/enrolled-classes">
+                      <FaBookReader></FaBookReader>Enrolled Classes
+                    </NavLink>
+                  </li>
+                  <li className="mb-1">
+                    <NavLink to="/dashboard/selected-classes">
+                      <FaBookmark></FaBookmark>Selected Classes
+                    </NavLink>
+                  </li>
+                  <li className="mb-1">
+                    <NavLink to="/dashboard/payment">
+                      <FaDonate></FaDonate>Make Payment
+                    </NavLink>
+                  </li>
+                  <li className="mb-1">
+                    <NavLink to="/dashboard/Payment-history">
+                      <FaHistory></FaHistory>Payment History
+                    </NavLink>
+                  </li>
+                </>
+              )}
+              <>
+                <div className="divider"></div>
+                <li className="mb-1">
+                  <NavLink to="/instructors">
+                    <FaUsers></FaUsers>All Instructors
+                  </NavLink>
+                </li>
+                <li className="mb-1">
+                  <NavLink to="/classes">
+                    <FaSchool></FaSchool>All Classes
+                  </NavLink>
+                </li>
+                <li className="mb-1">
+                  <NavLink to="/">
+                    <FaHome></FaHome>MaxCoach Home
+                  </NavLink>
+                </li>
+              </>
             </ul>
           </div>
         </div>
       </div>
-      {/* <Footer></Footer> */}
     </div>
   );
 };
