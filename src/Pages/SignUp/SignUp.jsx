@@ -1,4 +1,4 @@
-import  { useContext, useState } from "react";
+import { useContext, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
@@ -16,34 +16,47 @@ const SignUp = () => {
     formState: { errors },
   } = useForm();
 
-    const { createUser, updateUserProfile } = useContext(AuthContext);
+  const { createUser, updateUserProfile } = useContext(AuthContext);
 
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
-   const onSubmit = (data) => {
-     createUser(data.email, data.password)
-       .then((userCredential) => {
-         const user = userCredential.user;
-         console.log(user);
-         updateUserProfile(data.name, data.photo).then(() => {
-           reset();
-           Swal.fire({
-             position: "top-end",
-             icon: "success",
-             title: "User created successfully.",
-             showConfirmButton: false,
-             timer: 1500,
-           });
-         });
-         navigate("/");
-       })
-       .catch((error) => {
-         console.log(error);
-       });
-   };
+  const onSubmit = (data) => {
+    createUser(data.email, data.password)
+      .then((userCredential) => {
+        const loggedUser = userCredential.user;
+        console.log(loggedUser);
 
+        updateUserProfile(data.name, data.photoURL).then(() => {
+          const savedUser = {name: data.name, email: data.email, photoURL: data.photoURL, role: "student"};
+          fetch("http://localhost:5000/users", {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(savedUser),
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              console.log(data.insertedId);
+              reset();
+              Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "User created successfully.",
+                showConfirmButton: false,
+                timer: 1500,
+              });
+              navigate("/");
+            });
+        });
+        
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   const password = watch("password");
 
@@ -181,10 +194,10 @@ const SignUp = () => {
                   </span>
                 </div>
                 {errors.confirmPassword?.type === "required" && (
-                  <p className="text-red-600">Confirm Password is required</p>
+                  <p className="text-red-600">Please Confirm Your Password</p>
                 )}
                 {errors.confirmPassword?.type === "validate" && (
-                  <p className="text-red-600">Passwords do not match</p>
+                  <p className="text-red-600">Passwords did not match</p>
                 )}
               </div>
               <div className="form-control mt-6">

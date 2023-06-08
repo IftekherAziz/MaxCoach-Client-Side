@@ -13,18 +13,35 @@ const SocialLogin = () => {
 
   // Handle google login:
   const handleGoogleSignIn = () => {
-    googleSignIn()
-    .then((result) => {
+    googleSignIn().then((result) => {
       const loggedInUser = result.user;
       console.log(loggedInUser);
-       Swal.fire({
-         position: "top-end",
-         icon: "success",
-         title: "Login successfully.",
-         showConfirmButton: false,
-         timer: 1500,
-       });
-      navigate(from, { replace: true });
+
+      const saveUser = {
+        name: loggedInUser.displayName,
+        email: loggedInUser.email,
+        role: "student",
+      };
+
+      // Save user data on MongoDB:
+      fetch("http://localhost:5000/users", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(saveUser),
+      })
+        .then((res) => res.json())
+        .then(() => {
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Login successfully.",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          navigate(from, { replace: true });
+        });
     });
   };
   return (
