@@ -5,11 +5,11 @@ import Slider from "./Slider/Slider";
 
 const Home = () => {
     return (
-        <div>
-            <Slider></Slider>
-            <PopularClasses></PopularClasses>
-            
-        </div>
+      <div>
+        <Slider></Slider>
+        <PopularClasses></PopularClasses>
+        <PopularInstructors></PopularInstructors>
+      </div>
     );
 };
 
