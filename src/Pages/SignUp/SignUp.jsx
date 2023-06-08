@@ -62,7 +62,7 @@ const SignUp = () => {
       </Helmet>
       <div className=" ">
         <div className=" flex-col md:flex-row-reverse m-10">
-          <div className=" max-w-md mx-auto  border shadow-xl bg-zinc-50 ">
+          <div className=" max-w-md mx-auto  border shadow-xl bg-zinc-50 rounded-md">
             <form onSubmit={handleSubmit(onSubmit)} className="card-body">
               <div className="form-control">
                 <label className="label">

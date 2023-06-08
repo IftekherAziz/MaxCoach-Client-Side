@@ -54,8 +54,8 @@ const Login = () => {
       <Helmet>
         <title>MaxCoach | Login</title>
       </Helmet>
-      <div className="p-10 m-10">
-        <div className="max-w-md bg-zinc-50 mx-auto border shadow-xl">
+      <div className="m-10">
+        <div className="max-w-md bg-zinc-50 mx-auto border shadow-xl rounded-md">
           <form onSubmit={handleSubmit(handleLogin)} className="card-body">
             {errorMessage && (
               <div className="text-red-600">{errorMessage}</div> // Display the error message

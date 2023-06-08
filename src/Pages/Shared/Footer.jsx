@@ -1,18 +1,31 @@
+import { Link } from "react-router-dom";
+
 const Footer = () => {
   return (
     <div className="bg-neutral-50">
       <footer className="footer  justify-between max-w-7xl mx-auto py-12 md:px-0 px-6 text-base-content">
         <div>
-          <span className="footer-title">Services</span>
-          <a className="link link-hover">Branding</a>
-          <a className="link link-hover">Marketing</a>
-          <a className="link link-hover">Advertisement</a>
+          <Link to="/">
+            <img
+              className="w-40 mb-5"
+              src="https://i.ibb.co/wp4n6bT/logo.png"
+              alt="Logo"
+            />
+          </Link>
+          <p>
+            <b>Address:</b> Shyamoly Housing, Sector 05,
+            <br />
+            Uttara, Dhaka -1230, Bangladesh
+          </p>
+          <p>
+            <b>Email:</b> contact@maxcoach.com
+          </p>
         </div>
         <div>
           <span className="footer-title">Company</span>
           <a className="link link-hover">About us</a>
-          <a className="link link-hover">Jobs</a>
-          <a className="link link-hover">Contact</a>
+          <Link to="/classes" className="link link-hover">All Classes</Link>
+          <Link to="/instructors" className="link link-hover">All Instructor</Link>
         </div>
         <div>
           <span className="footer-title">Legal</span>
