@@ -2,7 +2,7 @@ import { Navigate, useLocation } from "react-router";
 import useUser from "../Hooks/useUser";
 
 const AdminRoute = ({ children }) => {
-  const { user, loading } = useUser();
+  const [userFromDB, loading] = useUser();
   const location = useLocation();
 
   if (loading) {
@@ -13,7 +13,7 @@ const AdminRoute = ({ children }) => {
     );
   }
 
-  if (user && user.role === "admin") {
+  if (userFromDB && userFromDB.role === "admin") {
     return children;
   }
   return <Navigate to="/" state={{ from: location }} replace></Navigate>;

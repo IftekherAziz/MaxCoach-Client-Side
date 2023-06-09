@@ -1,8 +1,8 @@
 import { Navigate, useLocation } from "react-router";
 import useUser from "../Hooks/useUser";
 
-const StudentRoutes = ({ children }) => {
-  const { user, loading } = useUser();
+const StudentRoute = ({ children }) => {
+  const [userFromDB, loading] = useUser();
   const location = useLocation();
 
   if (loading) {
@@ -13,10 +13,10 @@ const StudentRoutes = ({ children }) => {
     );
   }
 
-  if (user && user.role === "student") {
+  if (userFromDB && userFromDB.role === "student") {
     return children;
   }
   return <Navigate to="/" state={{ from: location }} replace></Navigate>;
 };
 
-export default StudentRoutes;
+export default StudentRoute;

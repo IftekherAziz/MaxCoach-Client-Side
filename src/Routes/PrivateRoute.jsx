@@ -12,7 +12,6 @@ const PrivateRoute = ({ children }) => {
       <div className="flex justify-center text-center pt-20 ">
         <progress className="progress w-56 mt-12"></progress>
       </div>
-      
     );
   }
   // Check if user is logged in

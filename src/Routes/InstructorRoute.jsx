@@ -2,7 +2,7 @@ import { Navigate, useLocation } from "react-router";
 import useUser from "../Hooks/useUser";
 
 const InstructorRoute = ({ children }) => {
-  const { user, loading } = useUser();
+  const [userFromDB, loading] = useUser();
   const location = useLocation();
 
   if (loading) {
@@ -13,7 +13,7 @@ const InstructorRoute = ({ children }) => {
     );
   }
 
-  if (user && user.role === "instructor") {
+  if (userFromDB && userFromDB.role === "instructor") {
     return children;
   }
   return <Navigate to="/" state={{ from: location }} replace></Navigate>;
