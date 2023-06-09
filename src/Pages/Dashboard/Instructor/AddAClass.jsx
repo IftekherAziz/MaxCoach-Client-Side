@@ -44,6 +44,7 @@ const AddAClass = () => {
           image: imgURL,
           status: "pending",
           enrolled_students: 0,
+          feedback: "",
         };
         axiosSecure.post("/classes", newItem).then((res) => {
           if (res.data.insertedId) {
@@ -61,127 +62,141 @@ const AddAClass = () => {
   };
 
   return (
-    <div>
+    <div className="max-w-sm mx-auto md:max-w-full">
       <Helmet>
         <title>MaxCoach | Add A Class</title>
       </Helmet>
       <h3 className="border mb-5 text-xl bg-zinc-50 rounded font-semibold h-[60px] text-center flex items-center justify-center">
         Add A Class
       </h3>
-      <form
-        onSubmit={handleSubmit(onSubmit)}
-        className="border p-10 bg-zinc-50"
-      >
-        <div className="form-control w-full mb-2">
-          <label className="label">
-            <span className="label-text font-semibold">Class Name*</span>
-          </label>
-          <input
-            type="text"
-            placeholder="Class Name"
-            {...register("className", { required: true, maxLength: 120 })}
-            className={`input input-bordered w-full ${
-              errors.className ? "input-error" : ""
-            }`}
-          />
-          {errors.className && (
-            <span className="text-red-500">Class Name is required</span>
-          )}
-        </div>
-        <div className="flex mb-2">
-          <div className="form-control w-full">
+      <div>
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className="border p-5 md:p-10 bg-zinc-50"
+        >
+          <div className="form-control w-full mb-2">
             <label className="label">
-              <span className="label-text font-semibold">Instructor Name</span>
+              <span className="label-text font-semibold">Class Name*</span>
             </label>
             <input
               type="text"
-              readOnly
-              defaultValue={userFromDB?.name}
-              placeholder="Instructor Name"
-              {...register("instructorName", { required: true })}
+              placeholder="Class Name"
+              {...register("className", { required: true, maxLength: 120 })}
               className={`input input-bordered w-full ${
-                errors.instructorName ? "input-error" : ""
+                errors.className ? "input-error" : ""
               }`}
             />
-            {errors.instructorName && (
-              <span className="text-red-500">Instructor Name is required</span>
+            {errors.className && (
+              <span className="text-red-500">Class Name is required</span>
             )}
           </div>
-          <div className="form-control w-full ml-4">
+          <div className="flex mb-2">
+            <div className="form-control w-full">
+              <label className="label">
+                <span className="label-text font-semibold">
+                  Instructor Name
+                </span>
+              </label>
+              <input
+                type="text"
+                readOnly
+                defaultValue={userFromDB?.name}
+                placeholder="Instructor Name"
+                {...register("instructorName", { required: true })}
+                className={`input input-bordered w-full ${
+                  errors.instructorName ? "input-error" : ""
+                }`}
+              />
+              {errors.instructorName && (
+                <span className="text-red-500">
+                  Instructor Name is required
+                </span>
+              )}
+            </div>
+            <div className="form-control w-full ml-4">
+              <label className="label">
+                <span className="label-text font-semibold">
+                  Instructor Email
+                </span>
+              </label>
+              <input
+                type="email"
+                readOnly
+                defaultValue={userFromDB?.email}
+                placeholder="Instructor Email"
+                {...register("instructorEmail", { required: true })}
+                className={`input input-bordered w-full ${
+                  errors.instructorEmail ? "input-error" : ""
+                }`}
+              />
+              {errors.instructorEmail && (
+                <span className="text-red-500">
+                  Instructor Email is required
+                </span>
+              )}
+            </div>
+          </div>
+          <div className="flex mb-2">
+            <div className="form-control w-full">
+              <label className="label">
+                <span className="label-text font-semibold">
+                  Available Seats*
+                </span>
+              </label>
+              <input
+                type="number"
+                min="0"
+                {...register("availableSeats", { required: true })}
+                placeholder="Available Seats"
+                className={`input input-bordered w-full ${
+                  errors.availableSeats ? "input-error" : ""
+                }`}
+              />
+              {errors.availableSeats && (
+                <span className="text-red-500">
+                  Available Seats is required
+                </span>
+              )}
+            </div>
+            <div className="form-control w-full ml-4">
+              <label className="label">
+                <span className="label-text font-semibold">Course Price*</span>
+              </label>
+              <input
+                type="number"
+                min="0"
+                step="any"
+                {...register("price", { required: true })}
+                placeholder="Course Price"
+                className={`input input-bordered w-full ${
+                  errors.price ? "input-error" : ""
+                }`}
+              />
+              {errors.price && (
+                <span className="text-red-500">Course Price is required</span>
+              )}
+            </div>
+          </div>
+          <div className="form-control w-full mb-4">
             <label className="label">
-              <span className="label-text font-semibold">Instructor Email</span>
+              <span className="label-text font-semibold">Class Image*</span>
             </label>
             <input
-              type="email"
-              readOnly
-              defaultValue={userFromDB?.email}
-              placeholder="Instructor Email"
-              {...register("instructorEmail", { required: true })}
-              className={`input input-bordered w-full ${
-                errors.instructorEmail ? "input-error" : ""
-              }`}
+              type="file"
+              {...register("image", { required: true })}
+              className="file-input file-input-bordered w-full md:w-6/12"
             />
-            {errors.instructorEmail && (
-              <span className="text-red-500">Instructor Email is required</span>
+            {errors.image && (
+              <span className="text-red-500">Class Image is required</span>
             )}
           </div>
-        </div>
-        <div className="flex mb-2">
-          <div className="form-control w-full">
-            <label className="label">
-              <span className="label-text font-semibold">Available Seats*</span>
-            </label>
-            <input
-              type="number"
-              min="0"
-              {...register("availableSeats", { required: true })}
-              placeholder="Available Seats"
-              className={`input input-bordered w-full ${
-                errors.availableSeats ? "input-error" : ""
-              }`}
-            />
-            {errors.availableSeats && (
-              <span className="text-red-500">Available Seats is required</span>
-            )}
-          </div>
-          <div className="form-control w-full ml-4">
-            <label className="label">
-              <span className="label-text font-semibold">Course Price*</span>
-            </label>
-            <input
-              type="number"
-              min="0"
-              step="any"
-              {...register("price", { required: true })}
-              placeholder="Course Price"
-              className={`input input-bordered w-full ${
-                errors.price ? "input-error" : ""
-              }`}
-            />
-            {errors.price && (
-              <span className="text-red-500">Course Price is required</span>
-            )}
-          </div>
-        </div>
-        <div className="form-control w-full mb-4">
-          <label className="label">
-            <span className="label-text font-semibold">Class Image*</span>
-          </label>
           <input
-            type="file"
-            {...register("image", { required: true })}
-            className="file-input file-input-bordered w-full md:w-6/12"
+            className="btn btn-neutral w-full mt-4"
+            type="submit"
+            value="Add A Class"
           />
-          {errors.image && (
-            <span className="text-red-500">Class Image is required</span>
-          )}
-        </div>
-        <input
-          className="btn btn-neutral w-full mt-4"
-          type="submit"
-          value="Add A Class"
-        />
-      </form>
+        </form>
+      </div>
     </div>
   );
 };

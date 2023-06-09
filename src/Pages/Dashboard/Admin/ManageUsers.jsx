@@ -65,60 +65,61 @@ const ManageUsers = () => {
   const handleDelete = () => {};
 
   return (
-    <div>
+    <div className=" max-w-sm mx-auto md:max-w-full">
       <Helmet>
         <title>MaxCoach | Manage Users </title>
       </Helmet>
-      <h3 className="border mb-5 text-xl bg-zinc-50 rounded font-semibold h-[50px] text-center flex items-center justify-center">
+      <h3 className="border mb-5 text-xl bg-zinc-50 rounded font-semibold h-[80px] text-center flex items-center justify-center">
         Total Users: {users.length}
       </h3>
-      <div className="overflow-x-auto">
-        <table className="table border w-full mb-10">
-          <thead>
-            <tr>
-              <th>No</th>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Make Admin</th>
-              <th>Make Instructor</th>
-            </tr>
-          </thead>
-          <tbody>
-            {users.map((user, index) => (
-              <tr key={user._id}>
-                <td>{index + 1}</td>
-                <td>{user.name}</td>
-                <td>{user.email}</td>
-                <td>
-                  {user.role === "admin" ? (
-                    "admin"
-                  ) : (
-                    <button
-                      onClick={() => handleMakeAdmin(user)}
-                      className="btn btn-ghost bg-teal-800 text-white"
-                    >
-                      <FaUserSecret />
-                    </button>
-                  )}
-                </td>
-                <td>
-                  {user.role === "instructor" ? (
-                    "instructor"
-                  ) : (
-                    <button
-                      onClick={() => handleMakeInstructor(user)}
-                      className="btn btn-ghost bg-teal-800 text-white"
-                    >
-                      <FaUserGraduate />
-                    </button>
-                  )}
-                </td>
+      <div>
+        <div className="overflow-x-auto">
+          <table className="table border w-full mb-10">
+            <thead className="bg-zinc-50">
+              <tr>
+                <th>No</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Make Admin</th>
+                <th>Make Instructor</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {users.map((user, index) => (
+                <tr key={user._id}>
+                  <td>{index + 1}</td>
+                  <td>{user.name}</td>
+                  <td>{user.email}</td>
+                  <td>
+                    {user.role === "admin" ? (
+                      "admin"
+                    ) : (
+                      <button
+                        onClick={() => handleMakeAdmin(user)}
+                        className="btn btn-ghost bg-teal-800 text-white"
+                      >
+                        <FaUserSecret />
+                      </button>
+                    )}
+                  </td>
+                  <td>
+                    {user.role === "instructor" ? (
+                      "instructor"
+                    ) : (
+                      <button
+                        onClick={() => handleMakeInstructor(user)}
+                        className="btn btn-ghost bg-teal-800 text-white"
+                      >
+                        <FaUserGraduate />
+                      </button>
+                    )}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
-      
     </div>
   );
 };

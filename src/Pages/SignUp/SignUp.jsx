@@ -56,7 +56,6 @@ const SignUp = () => {
               navigate("/");
             });
         });
-        
       })
       .catch((error) => {
         console.log(error);

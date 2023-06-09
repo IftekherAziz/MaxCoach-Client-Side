@@ -9,6 +9,7 @@ const Header = () => {
 
   const [userFromDB] = useUser();
   const role = userFromDB?.role;
+  console.log(role);
 
   // Handle logout:
   const handleLogout = () => {
@@ -40,21 +41,18 @@ const Header = () => {
       </li>
       {role === "admin" ? (
         <>
-          {" "}
           <li>
             <NavLink to="/dashboard/manage-classes">Dashboard</NavLink>
           </li>
         </>
       ) : role === "instructor" ? (
         <>
-          {" "}
           <li>
             <NavLink to="/dashboard/my-classes">Dashboard</NavLink>
           </li>
         </>
       ) : role === "student" ? (
         <>
-          {" "}
           <li>
             <NavLink to="/dashboard/selected-classes">Dashboard</NavLink>
           </li>
