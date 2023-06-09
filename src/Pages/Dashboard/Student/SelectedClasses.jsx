@@ -1,9 +1,13 @@
+import { Helmet } from "react-helmet";
 
 const SelectedClasses = () => {
     return (
-        <div>
-            <h2>My Selected Classes</h2>
-        </div>
+      <div>
+        <Helmet>
+          <title>MaxCoach | Selected Classes </title>
+        </Helmet>
+        <h2>Selected Classes</h2>
+      </div>
     );
 };
 

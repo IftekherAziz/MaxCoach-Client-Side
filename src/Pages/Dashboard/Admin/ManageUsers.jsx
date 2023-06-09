@@ -1,14 +1,15 @@
 /* eslint-disable no-unused-vars */
 import { useQuery } from "@tanstack/react-query";
-import useAxios from "../../../Hooks/useAxios";
+// import useAxios from "../../../Hooks/useAxios";
 import { FaUserSecret, FaUserGraduate } from "react-icons/fa";
 import { Helmet } from "react-helmet";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 
 const ManageUsers = () => {
-  const [basicAxios] = useAxios();
+  const [axiosSecure] = useAxiosSecure();
   const { data: users = [], refetch } = useQuery(["users"], async () => {
-    const res = await basicAxios.get("/users");
+    const res = await axiosSecure.get("/users");
     return res.data;
   });
 
@@ -117,6 +118,7 @@ const ManageUsers = () => {
           </tbody>
         </table>
       </div>
+      
     </div>
   );
 };

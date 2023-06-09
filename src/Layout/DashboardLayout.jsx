@@ -20,8 +20,8 @@ const DashboardLayout = () => {
     return <></>;
   }
   return (
-    <div>
-      <div className="min-h-screen max-w-7xl mx-auto">
+    
+      <div className=" max-w-7xl mx-auto">
         <div className="drawer lg:drawer-open">
           <input id="my-drawer" type="checkbox" className="drawer-toggle" />
           <div className="drawer-content  py-5 border border-l-0 shadow-sm">
@@ -119,7 +119,7 @@ const DashboardLayout = () => {
           </div>
         </div>
       </div>
-    </div>
+    
   );
 };
 
