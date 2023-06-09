@@ -52,13 +52,15 @@ const Header = () => {
             <NavLink to="/dashboard/my-classes">Dashboard</NavLink>
           </li>
         </>
-      ) : (
+      ) : role === "student" ? (
         <>
           {" "}
           <li>
             <NavLink to="/dashboard/selected-classes">Dashboard</NavLink>
           </li>
         </>
+      ) : (
+        <></>
       )}
     </>
   );

@@ -41,7 +41,7 @@ const DashboardLayout = () => {
           </div>
           <div className="drawer-side ">
             <label htmlFor="my-drawer" className="drawer-overlay"></label>
-            <ul className="menu p-4 w-80 h-screen   bg-zinc-50  shadow-xl text-black">
+            <ul className="menu p-4 w-80 h-screen   bg-teal-800 shadow-xl text-white">
               {/* Sidebar content here */}
               <div className="text-2xl font-medium ml-1">Dashboard</div>
               <div className="divider"></div>
@@ -71,7 +71,7 @@ const DashboardLayout = () => {
                     </NavLink>
                   </li>
                 </>
-              ) : (
+              ) : role === "student" ? (
                 <>
                   <li className="mb-1">
                     <NavLink to="/dashboard/enrolled-classes">
@@ -94,6 +94,8 @@ const DashboardLayout = () => {
                     </NavLink>
                   </li>
                 </>
+              ) : (
+                <></>
               )}
               <>
                 <div className="divider"></div>
