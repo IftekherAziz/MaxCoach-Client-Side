@@ -5,9 +5,9 @@ const PopularClasses = () => {
     <section className="mb-12 mx-10 md:mx-0">
       <div>
         <h2 className="text-4xl font-bold text-center mt-20 mb-5">
-          Browse Popular Classes
+           Popular Classes
         </h2>
-        <hr className="w-1/3 mx-auto bg-orange-400 h-1" />
+        <hr className="w-1/6 mx-auto bg-teal-800 h-1" />
       </div>
       <div className="flex flex-wrap justify-between items-center mt-20">
         <div className="card w-96 bg-base-100 shadow-md mb-10">
@@ -21,7 +21,7 @@ const PopularClasses = () => {
           <div className="card-body  ">
             <h2 className="card-title">Mastering DSLR Photography</h2>
             <p className="text-md">
-              Students: <span className="text-orange-500 font-medium">100</span>
+              Students: <span className="text-teal-800 font-medium">100</span>
             </p>
             <p className="text-sm">
               Unlock your DSLR's potential. Learn exposure, composition,
@@ -45,7 +45,7 @@ const PopularClasses = () => {
           <div className="card-body ">
             <h2 className="card-title">Portrait Photography Essentials</h2>
             <p className="text-md">
-              Students: <span className="text-orange-500 font-medium">120</span>
+              Students: <span className="text-teal-800  font-medium">120</span>
             </p>
             <p className="text-sm">
               Capture captivating portraits. Master lighting, posing, and
@@ -70,7 +70,7 @@ const PopularClasses = () => {
             <h2 className="card-title">Landscape Photography</h2>
             <p className="text-md">
               Students:
-              <span className="text-orange-500 font-medium"> 80</span>
+              <span className="text-teal-800  font-medium"> 80</span>
             </p>
             <p className="text-sm">
               Explore breathtaking landscapes. Master composition, lighting, and
@@ -83,7 +83,7 @@ const PopularClasses = () => {
             </div>
           </div>
         </div>
-      </div>  
+      </div>
     </section>
   );
 };

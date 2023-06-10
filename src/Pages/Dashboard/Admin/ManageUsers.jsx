@@ -1,15 +1,13 @@
 /* eslint-disable no-unused-vars */
 import { useQuery } from "@tanstack/react-query";
-// import useAxios from "../../../Hooks/useAxios";
 import { FaUserSecret, FaUserGraduate } from "react-icons/fa";
 import { Helmet } from "react-helmet";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
-import useAuth from "../../../Hooks/useAuth";
+
 
 const ManageUsers = () => {
   const [axiosSecure] = useAxiosSecure();
-  const { user } = useAuth();
   const { data: users = [], refetch } = useQuery(["users"], async () => {
     const res = await axiosSecure.get("/users");
     return res.data;

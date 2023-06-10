@@ -1,9 +1,11 @@
 import { Helmet } from "react-helmet";
 import { useEffect, useState } from "react";
 import axios from "axios";
+// import useUser from "../../Hooks/useUser";
 
 const Classes = () => {
   const [allClasses, setAllClasses] = useState([]);
+  // const [userFromDB] = useUser();
 
   useEffect(() => {
     fetchClasses();
@@ -27,7 +29,7 @@ const Classes = () => {
         <h2 className="text-4xl font-bold text-center mt-20 mb-5">
           Browse All Classes
         </h2>
-        <hr className="w-1/4 mx-auto bg-orange-400 h-1" />
+        <hr className="w-1/6 mx-auto bg-teal-800 h-1" />
       </div>
       <div className="flex flex-wrap gap-10 items-center mt-20">
         {allClasses.map((classes) => (
@@ -53,9 +55,9 @@ const Classes = () => {
                   </span>
                 </p>
                 <p className="text-sm">
-                  Enrolled: {" "}
+                  Enrolled:{" "}
                   <span className="text-orange-500 font-medium">
-                     {classes.enrolled_students}
+                    {classes.enrolled_students}
                   </span>
                 </p>
               </div>
@@ -74,7 +76,12 @@ const Classes = () => {
                 </p>
               </div>
               <span className="divider"></span>
-              <button className="btn btn-neutral">Enroll Now</button>
+              <button
+                className="btn btn-neutral"
+                
+              >
+                Enroll Now
+              </button>
             </div>
           </div>
         ))}

@@ -7,7 +7,7 @@ const StudentReview = () => {
           <h2 className="text-4xl font-bold text-center mt-20 mb-5">
             Satisfied learners
           </h2>
-          <hr className="w-1/3 mx-auto bg-orange-400 h-1" />
+          <hr className="w-1/6 mx-auto bg-teal-800 h-1" />
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mt-20 ">
           <div className=" p-10  rounded-lg shadow">
