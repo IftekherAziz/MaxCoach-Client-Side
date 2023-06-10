@@ -5,9 +5,11 @@ import { FaUserSecret, FaUserGraduate } from "react-icons/fa";
 import { Helmet } from "react-helmet";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import useAuth from "../../../Hooks/useAuth";
 
 const ManageUsers = () => {
   const [axiosSecure] = useAxiosSecure();
+  const { user } = useAuth();
   const { data: users = [], refetch } = useQuery(["users"], async () => {
     const res = await axiosSecure.get("/users");
     return res.data;
@@ -79,6 +81,7 @@ const ManageUsers = () => {
               <tr>
                 <th>No</th>
                 <th>Name</th>
+                <th>Image</th>
                 <th>Email</th>
                 <th>Make Admin</th>
                 <th>Make Instructor</th>
@@ -88,9 +91,16 @@ const ManageUsers = () => {
               {users.map((user, index) => (
                 <tr key={user._id}>
                   <td>{index + 1}</td>
-                  <td>{user.name}</td>
-                  <td>{user.email}</td>
                   <td>
+                    <img
+                      className="h-10 md:h-12 w-10 md:w-12 rounded"
+                      src={user.photoURL}
+                      alt="User Image"
+                    />
+                  </td>
+                  <td className="capitalize">{user.name}</td>
+                  <td>{user.email}</td>
+                  <td className="capitalize">
                     {user.role === "admin" ? (
                       "admin"
                     ) : (
@@ -102,7 +112,7 @@ const ManageUsers = () => {
                       </button>
                     )}
                   </td>
-                  <td>
+                  <td className="capitalize">
                     {user.role === "instructor" ? (
                       "instructor"
                     ) : (

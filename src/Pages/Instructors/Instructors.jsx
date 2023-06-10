@@ -35,7 +35,7 @@ const Instructors = () => {
             <figure className="border border-t-slate-200 border-b-0">
               <img
                 src={instructor.photoURL}
-                alt={instructor.name}
+                alt="Instructor"
                 className="w-full max-h-[280px]"
               />
             </figure>

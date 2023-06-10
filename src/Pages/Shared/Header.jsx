@@ -9,7 +9,7 @@ const Header = () => {
 
   const [userFromDB] = useUser();
   const role = userFromDB?.role;
-  console.log(role);
+  // console.log(role);
 
   // Handle logout:
   const handleLogout = () => {

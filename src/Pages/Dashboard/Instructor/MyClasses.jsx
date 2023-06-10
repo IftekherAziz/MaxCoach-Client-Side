@@ -33,7 +33,7 @@ const MyClasses = () => {
               <tr>
                 <th>No</th>
                 <th>Image</th>
-                <th>Course Name</th>
+                <th>Class Name</th>
                 <th>Enrolled</th>
                 <th>Status</th>
                 <th>Price</th>
