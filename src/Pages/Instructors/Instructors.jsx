@@ -1,22 +1,19 @@
 import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
-import axios from "axios";
 
 const Instructors = () => {
   const [instructors, setInstructors] = useState([]);
 
   useEffect(() => {
-    fetchInstructors();
+    fetch("http://localhost:5000/instructors")
+      .then((response) => response.json())
+      .then((data) => {
+        setInstructors(data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   }, []);
-
-  const fetchInstructors = async () => {
-    try {
-      const response = await axios.get("http://localhost:5000/instructors");
-      setInstructors(response.data);
-    } catch (error) {
-      console.error(error);
-    }
-  };
 
   return (
     <section className="mb-10 mx-10 md:mx-0">
@@ -41,7 +38,7 @@ const Instructors = () => {
             </figure>
             <div className="card-body bg-zinc-50 rounded-lg rounded-t-none">
               <h2 className="card-title">{instructor.name}</h2>
-              <p className="text-sm text-justify">Email: {instructor.email}</p>             
+              <p className="text-sm text-justify">Email: {instructor.email}</p>
               <button className="btn btn-neutral mt-5">View All Classes</button>
             </div>
           </div>

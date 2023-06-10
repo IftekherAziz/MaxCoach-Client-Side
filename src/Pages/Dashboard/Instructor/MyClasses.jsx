@@ -45,11 +45,17 @@ const MyClasses = () => {
               {instructorClasses.map((myClass, index) => (
                 <tr key={myClass._id}>
                   <th>{index + 1}</th>
-                  <th><img className="h-12 w-12 rounded" src={myClass.image} alt="Course Name" /></th>
+                  <th>
+                    <img
+                      className="h-12 w-12 rounded"
+                      src={myClass.image}
+                      alt="Course Name"
+                    />
+                  </th>
                   <td>{myClass.className}</td>
                   <td className="text-center">{myClass.enrolled_students}</td>
                   <td>{myClass.status}</td>
-                  <td>{myClass.price}</td>
+                  <td>{myClass.price.toFixed(2)}</td>
                   <td>{myClass.feedback}</td>
                   <td>
                     <button

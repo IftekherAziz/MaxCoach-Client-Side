@@ -138,7 +138,7 @@ const ManageClasses = () => {
                   <td>{myClass.instructorName}</td>
                   <td>{myClass.instructorEmail}</td>
                   <td className="text-center">{myClass.availableSeats}</td>
-                  <td>{myClass.price}</td>
+                  <td>{myClass.price.toFixed(2)}</td>
                   <td className="capitalize">{myClass.status}</td>
                   <td>
                     {" "}

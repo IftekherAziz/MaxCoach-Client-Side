@@ -8,7 +8,6 @@ import {
   FaBookReader,
   FaBookmark,
   FaDonate,
-  FaHistory,
   FaHome,
 } from "react-icons/fa";
 import useUser from "../Hooks/useUser";
@@ -82,14 +81,14 @@ const DashboardLayout = () => {
                     <FaBookmark></FaBookmark>Selected Classes
                   </NavLink>
                 </li>
-                <li className="mb-1">
+                {/* <li className="mb-1">
                   <NavLink to="/dashboard/payment">
                     <FaDonate></FaDonate>Make Payment
                   </NavLink>
-                </li>
+                </li> */}
                 <li className="mb-1">
                   <NavLink to="/dashboard/Payment-history">
-                    <FaHistory></FaHistory>Payment History
+                    <FaDonate></FaDonate>Payment History
                   </NavLink>
                 </li>
               </>
