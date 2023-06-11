@@ -32,7 +32,7 @@ const SelectedClasses = () => {
   };
 
   return (
-    <div>
+    <div className="max-w-xs mx-auto md:max-w-full">
       <Helmet>
         <title>MaxCoach | Selected Classes </title>
       </Helmet>
@@ -61,12 +61,15 @@ const SelectedClasses = () => {
               <tr key={selectedClass._id}>
                 <th>{index + 1}</th>
                 <td>
-                  <img className="h-12 w-12 rounded" src={selectedClass.image} />
+                  <img
+                    className="h-12 w-12 rounded"
+                    src={selectedClass.image}
+                  />
                 </td>
                 <td className="font-semibold">{selectedClass.className}</td>
                 <td>{selectedClass.instructorEmail}</td>
                 <td className="text-center">{selectedClass.availableSeats}</td>
-                <td>${selectedClass.price}</td>            
+                <td>${selectedClass.price}</td>
                 <td>
                   <Link to={`/dashboard/payment/${selectedClass._id}`}>
                     <button className="btn btn-sm bg-black text-white capitalize">

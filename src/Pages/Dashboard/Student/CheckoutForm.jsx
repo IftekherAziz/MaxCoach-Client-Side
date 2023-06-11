@@ -1,18 +1,28 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { useEffect, useState } from "react";
-import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 import useAuth from "../../../Hooks/useAuth";
 
-
-const CheckoutForm = ({ cart, price }) => {
+const CheckoutForm = ({ price, selectedClass }) => {
   const stripe = useStripe();
   const elements = useElements();
   const { user } = useAuth();
-  const [axiosSecure] = useAxiosSecure();
   const [cardError, setCardError] = useState("");
   const [clientSecret, setClientSecret] = useState("");
+  const [axiosSecure] = useAxiosSecure();
   const [processing, setProcessing] = useState(false);
   const [transactionId, setTransactionId] = useState("");
+  const {
+    _id,
+    className,
+    instructorEmail,
+    image,
+    availableSeats,
+    selectedClassId,
+  } = selectedClass;
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (price > 0) {
@@ -25,7 +35,6 @@ const CheckoutForm = ({ cart, price }) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
     if (!stripe || !elements) {
       return;
     }
@@ -45,9 +54,7 @@ const CheckoutForm = ({ cart, price }) => {
       setCardError(error.message);
     } else {
       setCardError("");
-      // console.log('payment method', paymentMethod)
     }
-
     setProcessing(true);
 
     const { paymentIntent, error: confirmError } =
@@ -55,51 +62,52 @@ const CheckoutForm = ({ cart, price }) => {
         payment_method: {
           card: card,
           billing_details: {
-            email: user?.email || "unknown",
-            name: user?.displayName || "anonymous",
+            email: user?.email || "Unknown",
+            name: user?.displayName || "Anonymous",
           },
         },
       });
-
     if (confirmError) {
       console.log(confirmError);
     }
-
-    console.log("payment intent", paymentIntent);
     setProcessing(false);
+    // console.log("payment intent", paymentIntent);
     if (paymentIntent.status === "succeeded") {
       setTransactionId(paymentIntent.id);
-      // Save payment information to database:
       const payment = {
         email: user?.email,
         transactionId: paymentIntent.id,
         price,
         date: new Date(),
-        quantity: cart.length,
-        cartItems: cart.map((item) => item._id),
-        menuItems: cart.map((item) => item.menuItemId),
-        status: "Service Pending",
-        itemNames: cart.map((item) => item.name),
+        status: "service pending",
+        className,
+        instructorEmail,
+        image,
+        availableSeats,
+        selectedClassId,
+        cart_id: _id,
       };
-      await axiosSecure
-        .post("/payments", payment)
-        .then((res) => {
-          console.log(res.data);
-          if (res.data.insertedId) {
-            // Display confirm
-          }
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+      axiosSecure.post("/payments", payment).then((res) => {
+        // console.log(res.data);
+        if (res.data.insertedId) {
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Payment successfully done",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          navigate("/dashboard/enrolled-classes");
+        }
+      });
     }
   };
-
-  
-
   return (
-    <div className="">
-      <form className="w-full md:w-2/3 m-8 mx-auto" onSubmit={handleSubmit}>
+    <>
+      <form
+        onSubmit={handleSubmit}
+        className="w-full md:w-2/3 mx-auto  p-10  "
+      >
         <CardElement
           options={{
             style: {
@@ -116,23 +124,25 @@ const CheckoutForm = ({ cart, price }) => {
             },
           }}
         />
-        <button
-          className="btn mt-6 btn-block"
-          type="submit"
-          disabled={!stripe || !clientSecret || processing}
-        >
-          Pay Now
-        </button>
+        <div className="mt-5 text-center">
+          <button
+            className="btn btn-block btn-neutral mt-5=3"
+            type="submit"
+            disabled={!stripe || !clientSecret || processing}
+          >
+            Pay Now
+          </button>
+        </div>
       </form>
       {cardError && (
         <p className="mt-6 text-center text-red-600">{cardError}</p>
       )}
       {transactionId && (
-        <p className="text-green-500 text-center font-medium">
+        <p className="text-teal-800 text-center font-medium">
           Transaction complete with transactionId: {transactionId}
         </p>
       )}
-    </div>
+    </>
   );
 };
 

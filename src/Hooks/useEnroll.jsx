@@ -1,6 +1,7 @@
-import useAxiosSecure from "./useAxiosSecure";
 import useAuth from "./useAuth";
 import { useQuery } from "@tanstack/react-query";
+import useAxiosSecure from "./useAxiosSecure";
+
 
 const useEnroll = () => {
   const { user, loading } = useAuth();
@@ -10,7 +11,6 @@ const useEnroll = () => {
     enabled: !loading,
     queryFn: async () => {
       const res = await axiosSecure(`/carts?email=${user?.email}`);
-      console.log(res.data);
       return res.data;
     },
   });

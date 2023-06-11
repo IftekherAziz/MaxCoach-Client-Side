@@ -13,7 +13,6 @@ const Classes = () => {
 
   const [userFromDB] = useUser();
   const role = userFromDB?.role;
-  // console.log(role);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -88,7 +87,7 @@ const Classes = () => {
       </Helmet>
       <div>
         <h2 className="text-4xl font-bold text-center mt-20 mb-5">
-           Browse All Classes
+          Browse All Classes
         </h2>
         <hr className="w-1/6 mx-auto bg-teal-800 h-1" />
       </div>
@@ -96,13 +95,17 @@ const Classes = () => {
         {allClasses.map((classes) => (
           <div
             key={classes._id}
-            className="card w-full bg-base-100 shadow-md mb-10"
+            className={`card w-full bg-base-100 shadow-md mb-10 ${
+              classes.availableSeats - classes.enrolled_students === 0
+                ? "bg-red-600 text-white"
+                : ""
+            }`}
           >
             <figure className="">
               <img
                 src={classes.image}
                 alt="Class Image"
-                className="w-full h-[200px] cover"
+                className="w-full h-[200px] object-cover"
               />
             </figure>
             <div className="card-body  ">
@@ -111,13 +114,13 @@ const Classes = () => {
               <div className="flex items-center justify-center lg:justify-start">
                 <p className="text-sm">
                   Instructor :{" "}
-                  <span className="text-orange-500 font-medium">
+                  <span className=" font-medium">
                     {classes.instructorName}
                   </span>
                 </p>
                 <p className="text-sm">
                   Enrolled:{" "}
-                  <span className="text-orange-500 font-medium">
+                  <span className="font-medium">
                     {classes.enrolled_students}
                   </span>
                 </p>
@@ -125,13 +128,13 @@ const Classes = () => {
               <div className="flex items-center justify-center gap-x-6 lg:justify-start">
                 <p className="text-sm">
                   Available Seats :{" "}
-                  <span className="text-orange-500 font-medium">
-                    {classes.availableSeats}
+                  <span className="font-medium">
+                    {classes.availableSeats - classes.enrolled_students}
                   </span>
                 </p>
                 <p className="text-sm">
                   Price:{" "}
-                  <span className="text-orange-500 font-medium">
+                  <span className="font-medium">
                     ${classes.price}
                   </span>
                 </p>

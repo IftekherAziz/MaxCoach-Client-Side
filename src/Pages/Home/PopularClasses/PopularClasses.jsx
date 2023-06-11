@@ -48,7 +48,8 @@ const PopularClasses = () => {
                     </span>
                   </p>
                 </div>
-                <span className="divider"></span>
+                {/* TODO */}
+                {/* <span className="divider"></span>
                 <div className="flex items-center justify-center gap-x-6 lg:justify-start">
                   <p className="font-semibold text-md">
                     Price:{" "}
@@ -60,7 +61,7 @@ const PopularClasses = () => {
                   <button className="btn btn-neutral capitalize">
                     Enroll now
                   </button>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>

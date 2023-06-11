@@ -20,7 +20,7 @@ const Instructors = () => {
       <Helmet>
         <title>MaxCoach | Instructors</title>
       </Helmet>
-      <div >
+      <div>
         <h2 className="text-4xl font-bold text-center mt-12 mb-5">
           All Instructors
         </h2>
@@ -33,7 +33,7 @@ const Instructors = () => {
               <img
                 src={instructor.photoURL}
                 alt="Instructor"
-                className="w-full h-[220px]"
+                className="w-full h-[220px] "
               />
             </figure>
             <div className="card-body bg-zinc-50 rounded-lg rounded-t-none">

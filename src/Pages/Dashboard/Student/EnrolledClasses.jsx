@@ -2,7 +2,7 @@ import { Helmet } from "react-helmet";
 
 const EnrolledClasses = () => {
   return (
-    <div>
+    <div className="max-w-xs mx-auto md:max-w-full">
       <Helmet>
         <title>MaxCoach | Enrolled Classes </title>
       </Helmet>
