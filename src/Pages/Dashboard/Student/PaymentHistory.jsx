@@ -6,7 +6,11 @@ const PaymentHistory = () => {
       <Helmet>
         <title>MaxCoach | Payment History </title>
       </Helmet>
-      <h2>Payment History</h2>
+      <div className="mb-6 shadow-md py-5 bg-zinc-50">
+        <h2 className="text-center text-2xl font-bold  text-teal-800">
+         Payment History
+        </h2>
+      </div>
     </div>
   );
 };

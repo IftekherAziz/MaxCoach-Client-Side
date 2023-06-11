@@ -98,13 +98,15 @@ const ManageClasses = () => {
   };
 
   return (
-    <div className=" max-w-sm mx-auto md:max-w-full">
+    <div className=" max-w-xs mx-auto md:max-w-full">
       <Helmet>
         <title>MaxCoach | Manage Classes </title>
       </Helmet>
-      <h3 className="border mb-5 text-xl bg-zinc-50 rounded font-semibold h-[80px] text-center flex items-center justify-center">
-        Manage Classes
-      </h3>
+      <div className="mb-6 shadow-md py-5 bg-zinc-50">
+        <h2 className="text-center text-2xl font-bold  text-teal-800">
+          Manage Classes
+        </h2>
+      </div>
       <div>
         <div className="overflow-x-auto">
           <table className="table border mb-10">
@@ -138,7 +140,7 @@ const ManageClasses = () => {
                   <td>{myClass.instructorName}</td>
                   <td>{myClass.instructorEmail}</td>
                   <td className="text-center">{myClass.availableSeats}</td>
-                  <td>{myClass.price.toFixed(2)}</td>
+                  <td>{myClass.price}</td>
                   <td className="capitalize">{myClass.status}</td>
                   <td>
                     {" "}

@@ -62,13 +62,15 @@ const AddAClass = () => {
   };
 
   return (
-    <div className="max-w-sm mx-auto md:max-w-full">
+    <div className="max-w-xs mx-auto md:max-w-full">
       <Helmet>
         <title>MaxCoach | Add A Class</title>
-      </Helmet>
-      <h3 className="border mb-5 text-xl bg-zinc-50 rounded font-semibold h-[60px] text-center flex items-center justify-center">
-        Add A Class
-      </h3>
+      </Helmet>    
+      <div className="mb-6 shadow-md py-5 bg-zinc-50">
+        <h2 className="text-center text-2xl font-bold  text-teal-800">
+          Add A Class
+        </h2>
+      </div>
       <div>
         <form
           onSubmit={handleSubmit(onSubmit)}

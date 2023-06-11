@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
 import SwiperCore, { Navigation, Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper.min.css";
-
 
 // Initialize Swiper modules
 SwiperCore.use([Navigation, Pagination]);
@@ -12,18 +10,17 @@ const PopularInstructors = () => {
   const [instructors, setInstructors] = useState([]);
 
   useEffect(() => {
-    fetchInstructors();
+    fetch("http://localhost:5000/instructors")
+      .then((response) => response.json())
+      .then((data) => {
+        setInstructors(data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   }, []);
 
-  const fetchInstructors = async () => {
-    try {
-      const response = await axios.get("http://localhost:5000/instructors");
-      setInstructors(response.data);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-   const limitedInstructors = instructors.slice(0, 6);
+  const limitedInstructors = instructors.slice(0, 6);
 
   return (
     <section className="mb-12 mx-10 md:mx-0">
@@ -33,7 +30,7 @@ const PopularInstructors = () => {
         </h2>
         <hr className="w-1/6 mx-auto bg-teal-800 0 h-1" />
       </div>
-      <div className="mt-10">
+      <div className="mt-20">
         <Swiper
           spaceBetween={30}
           slidesPerView={1}

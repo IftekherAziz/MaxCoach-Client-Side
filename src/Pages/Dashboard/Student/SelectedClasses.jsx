@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 const SelectedClasses = () => {
   const [cart, refetch] = useEnroll();
 
-  const handleDelete = (singleClass) => {
+  const handleDelete = (selectedClass) => {
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -17,7 +17,7 @@ const SelectedClasses = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/carts/${singleClass._id}`, {
+        fetch(`http://localhost:5000/carts/${selectedClass._id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -57,18 +57,18 @@ const SelectedClasses = () => {
             </tr>
           </thead>
           <tbody>
-            {cart.map((singleClass, index) => (
-              <tr key={singleClass._id}>
+            {cart.map((selectedClass, index) => (
+              <tr key={selectedClass._id}>
                 <th>{index + 1}</th>
                 <td>
-                  <img className="h-12 w-12 rounded" src={singleClass.image} />
+                  <img className="h-12 w-12 rounded" src={selectedClass.image} />
                 </td>
-                <td className="font-semibold">{singleClass.className}</td>
-                <td>{singleClass.instructorEmail}</td>
-                <td className="text-center">{singleClass.availableSeats}</td>
-                <td>${singleClass.price}</td>
+                <td className="font-semibold">{selectedClass.className}</td>
+                <td>{selectedClass.instructorEmail}</td>
+                <td className="text-center">{selectedClass.availableSeats}</td>
+                <td>${selectedClass.price}</td>            
                 <td>
-                  <Link to={`/dashboard/payment/${singleClass._id}`}>
+                  <Link to={`/dashboard/payment/${selectedClass._id}`}>
                     <button className="btn btn-sm bg-black text-white capitalize">
                       Enroll
                     </button>
@@ -76,7 +76,7 @@ const SelectedClasses = () => {
                 </td>
                 <td>
                   <button
-                    onClick={() => handleDelete(singleClass)}
+                    onClick={() => handleDelete(selectedClass)}
                     className="btn btn-sm bg-red-600  text-white capitalize"
                   >
                     Delete

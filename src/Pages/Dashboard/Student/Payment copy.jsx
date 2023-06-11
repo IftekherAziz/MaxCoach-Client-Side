@@ -9,10 +9,8 @@ const stripePromise = loadStripe(import.meta.env.VITE_Payment_Gateway_PK);
 const Payment = () => {
   const {id} = useParams();
   console.log(id);
-  
   // Get the cart from useCart Hook:
   const [cart] = useEnroll();
-
   // Get the price from the cart
   const price = cart?.price;
   console.log(price);

@@ -88,7 +88,7 @@ const Classes = () => {
       </Helmet>
       <div>
         <h2 className="text-4xl font-bold text-center mt-20 mb-5">
-          Browse All Classes
+           Browse All Classes
         </h2>
         <hr className="w-1/6 mx-auto bg-teal-800 h-1" />
       </div>

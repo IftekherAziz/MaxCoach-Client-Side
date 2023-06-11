@@ -19,21 +19,20 @@ const DashboardLayout = () => {
     return <></>;
   }
   return (
-    <div className=" ">
+    <div className="">
       <div className="drawer lg:drawer-open">
         <input id="my-drawer" type="checkbox" className="drawer-toggle" />
-        <div className="drawer-content  py-5 border border-l-0 shadow-sm">
+        <div className="drawer-content py-5 lg:pt-0 border border-l-0 shadow-sm">
           {/* Page content here */}
-          <div className="text-center">
+          <div className=" font-medium  text-center">
             <label
               htmlFor="my-drawer"
               className="border rounded mt-10 px-3 py-2 cursor-pointer bg-zinc-50  drawer-button lg:hidden "
             >
-              Dashboard Menu
+              Menu
             </label>
           </div>
-
-          <div className="mt-8  mx-10">
+          <div className="mt-6 md:mt-4 px-0 md:px-10">
             <Outlet></Outlet>
           </div>
         </div>
@@ -81,7 +80,7 @@ const DashboardLayout = () => {
                     <FaBookmark></FaBookmark>Selected Classes
                   </NavLink>
                 </li>
-                {/* <li className="mb-1">
+               {/*  <li className="mb-1">
                   <NavLink to="/dashboard/payment">
                     <FaDonate></FaDonate>Make Payment
                   </NavLink>

@@ -1,10 +1,9 @@
 /* eslint-disable no-unused-vars */
 import { useQuery } from "@tanstack/react-query";
-import { FaUserSecret, FaUserGraduate } from "react-icons/fa";
+import { FaUserSecret, FaUserGraduate, FaTrash } from "react-icons/fa";
 import { Helmet } from "react-helmet";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
-
 
 const ManageUsers = () => {
   const [axiosSecure] = useAxiosSecure();
@@ -65,13 +64,15 @@ const ManageUsers = () => {
   const handleDelete = () => {};
 
   return (
-    <div className=" max-w-sm mx-auto md:max-w-full">
+    <div className=" max-w-xs mx-auto md:max-w-full">
       <Helmet>
         <title>MaxCoach | Manage Users </title>
       </Helmet>
-      <h3 className="border mb-5 text-xl bg-zinc-50 rounded font-semibold h-[80px] text-center flex items-center justify-center">
-        Total Users: {users.length}
-      </h3>
+      <div className="mb-6 shadow-md py-5 bg-zinc-50">
+        <h2 className="text-center text-2xl font-bold  text-teal-800">
+          Manage Users
+        </h2>
+      </div>
       <div>
         <div className="overflow-x-auto">
           <table className="table border w-full mb-10">
@@ -83,6 +84,7 @@ const ManageUsers = () => {
                 <th>Email</th>
                 <th>Make Admin</th>
                 <th>Make Instructor</th>
+                <th>Delete User</th>
               </tr>
             </thead>
             <tbody>
@@ -121,6 +123,15 @@ const ManageUsers = () => {
                         <FaUserGraduate />
                       </button>
                     )}
+                  </td>
+                  {/* TODO: Delete User  */}
+                  <td className="capitalize">
+                    <button
+                      onClick={() => handleDelete(user)}
+                      className="btn btn-ghost bg-red-600 text-white"
+                    >
+                      <FaTrash />
+                    </button>
                   </td>
                 </tr>
               ))}

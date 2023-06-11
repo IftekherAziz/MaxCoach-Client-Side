@@ -20,26 +20,28 @@ const Instructors = () => {
       <Helmet>
         <title>MaxCoach | Instructors</title>
       </Helmet>
-      <div>
+      <div >
         <h2 className="text-4xl font-bold text-center mt-12 mb-5">
           All Instructors
         </h2>
         <hr className="w-1/6 mx-auto bg-teal-800 h-1" />
       </div>
-      <div className="flex flex-wrap justify-between items-center mt-20">
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mt-20">
         {instructors.map((instructor) => (
-          <div key={instructor._id} className="card w-96  mb-10">
+          <div key={instructor._id} className="card w-full  mb-10">
             <figure className="border border-t-slate-200 border-b-0">
               <img
                 src={instructor.photoURL}
                 alt="Instructor"
-                className="w-full max-h-[280px]"
+                className="w-full h-[220px]"
               />
             </figure>
             <div className="card-body bg-zinc-50 rounded-lg rounded-t-none">
               <h2 className="card-title">{instructor.name}</h2>
               <p className="text-sm text-justify">Email: {instructor.email}</p>
-              <button className="btn btn-neutral mt-5">View All Classes</button>
+              <button className="btn capitalize btn-neutral mt-5">
+                View Classes
+              </button>
             </div>
           </div>
         ))}

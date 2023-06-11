@@ -19,13 +19,15 @@ const MyClasses = () => {
   const handleUpdate = () => {};
 
   return (
-    <div className=" max-w-sm mx-auto md:max-w-full">
+    <div className=" max-w-xs mx-auto md:max-w-full">
       <Helmet>
         <title>MaxCoach | My Classes </title>
       </Helmet>
-      <h3 className="border mb-5 text-xl bg-zinc-50 rounded font-semibold h-[80px] text-center flex items-center justify-center">
-        My Classes
-      </h3>
+      <div className="mb-6 shadow-md py-5 bg-zinc-50">
+        <h2 className="text-center text-2xl font-bold  text-teal-800">
+          My Classes
+        </h2>
+      </div>
       <div>
         <div className="overflow-x-auto">
           <table className="table border mb-10">
@@ -55,8 +57,9 @@ const MyClasses = () => {
                   <td>{myClass.className}</td>
                   <td className="text-center">{myClass.enrolled_students}</td>
                   <td>{myClass.status}</td>
-                  <td>{myClass.price.toFixed(2)}</td>
+                  <td>{myClass.price}</td>
                   <td>{myClass.feedback}</td>
+                {/* TO DO: UPDATE MY CLASS */}
                   <td>
                     <button
                       onClick={() => handleUpdate(user)}
