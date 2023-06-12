@@ -5,7 +5,8 @@ import useAuth from "../../Hooks/useAuth";
 import Swal from "sweetalert2";
 import { useLocation, useNavigate } from "react-router-dom";
 import useEnroll from "../../Hooks/useEnroll";
-import useAxiosSecure from "../../Hooks/useAxiosSecure"
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
+import { motion } from "framer-motion";
 const Classes = () => {
   const [allClasses, setAllClasses] = useState([]);
 
@@ -91,59 +92,75 @@ const Classes = () => {
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mt-20">
         {allClasses.map((classes) => (
-          <div
-            key={classes._id}
-            className={`card w-full bg-base-100 shadow-md mb-10 ${
-              classes.availableSeats == classes.enrolled_students
-                ? "bg-red-600 text-white"
-                : ""
-            }`}
-          >
-            <figure className="">
-              <img
-                src={classes.image}
-                alt="Class Image"
-                className="w-full h-[200px] object-cover"
-              />
-            </figure>
-            <div className="card-body  ">
-              <h2 className="text-md font-medium mb-2">{classes.className}</h2>
-
-              <div className="flex items-center justify-center lg:justify-start">
-                <p className="text-sm">
-                  Instructor :{" "}
-                  <span className=" font-medium">{classes.instructorName}</span>
-                </p>
-                <p className="text-sm">
-                  Enrolled:{" "}
-                  <span className="font-medium">
-                    {classes.enrolled_students}
-                  </span>
-                </p>
-              </div>
-              <div className="flex items-center justify-center gap-x-6 lg:justify-start">
-                <p className="text-sm">
-                  Total Seats :{" "}
-                  <span className="font-medium">{classes.availableSeats}</span>
-                </p>
-                <p className="text-sm">
-                  Price: <span className="font-medium">${classes.price}</span>
-                </p>
-              </div>
-              <span className="divider"></span>
-              <button
-                onClick={() => handleEnrollNow(classes)}
-                className="btn btn-neutral"
-                disabled={
-                  role === "admin" ||
-                  role === "instructor" ||
+          <>
+            <motion.div
+              key={classes._id}
+              initial={{ opacity: 0, scale: 0.5 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1 }}
+            >
+              <div
+                key={classes._id}
+                className={`card w-full bg-base-100 shadow-md mb-10 ${
                   classes.availableSeats == classes.enrolled_students
-                }
+                    ? "bg-red-600 text-white"
+                    : ""
+                }`}
               >
-                Enroll Now
-              </button>
-            </div>
-          </div>
+                <figure className="">
+                  <img
+                    src={classes.image}
+                    alt="Class Image"
+                    className="w-full h-[200px] object-cover"
+                  />
+                </figure>
+                <div className="card-body  ">
+                  <h2 className="text-md font-medium mb-2">
+                    {classes.className}
+                  </h2>
+
+                  <div className="flex items-center justify-center lg:justify-start">
+                    <p className="text-sm">
+                      Instructor :{" "}
+                      <span className=" font-medium">
+                        {classes.instructorName}
+                      </span>
+                    </p>
+                    <p className="text-sm">
+                      Enrolled:{" "}
+                      <span className="font-medium">
+                        {classes.enrolled_students}
+                      </span>
+                    </p>
+                  </div>
+                  <div className="flex items-center justify-center gap-x-6 lg:justify-start">
+                    <p className="text-sm">
+                      Total Seats :{" "}
+                      <span className="font-medium">
+                        {classes.availableSeats}
+                      </span>
+                    </p>
+                    <p className="text-sm">
+                      Price:{" "}
+                      <span className="font-medium">${classes.price}</span>
+                    </p>
+                  </div>
+                  <span className="divider"></span>
+                  <button
+                    onClick={() => handleEnrollNow(classes)}
+                    className="btn btn-neutral"
+                    disabled={
+                      role === "admin" ||
+                      role === "instructor" ||
+                      classes.availableSeats == classes.enrolled_students
+                    }
+                  >
+                    Enroll Now
+                  </button>
+                </div>
+              </div>
+            </motion.div>
+          </>
         ))}
       </div>
     </section>

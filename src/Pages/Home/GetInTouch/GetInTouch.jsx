@@ -1,4 +1,5 @@
-import { Slide, Fade } from "react-awesome-reveal";
+import { Fade } from "react-awesome-reveal";
+import { Link } from "react-router-dom";
 
 const GetInTouch = () => {
   return (
@@ -10,21 +11,20 @@ const GetInTouch = () => {
               <span className="block">Ready to start learning?</span>
             </h2>
           </Fade>
-          <Slide direction="down" duration={1500}>
-            <p className="text-md mt-6 max-w-xl mx-auto ">
-              Our courses are designed to take beginners to an advanced level or
-              fill in the gaps that the more experienced photographer may have.
-            </p>
-          </Slide>
+
+          <p className="text-md mt-6 max-w-xl mx-auto ">
+            Our courses are designed to take beginners to an advanced level or
+            fill in the gaps that the more experienced photographer may have.
+          </p>
 
           <div className="lg:mt-0 lg:flex-shrink-0">
-            <Slide direction="down" duration={1500}>
-              <div className="mt-6 inline-flex rounded-md shadow">
+            <div className="mt-6 inline-flex rounded-md shadow">
+              <Link to="/contact">
                 <button type="button" className="btn btn-neutral ">
                   Get In Touch
                 </button>
-              </div>
-            </Slide>
+              </Link>
+            </div>
           </div>
         </div>
       </div>

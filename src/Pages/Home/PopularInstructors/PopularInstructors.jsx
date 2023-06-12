@@ -29,7 +29,7 @@ const PopularInstructors = () => {
 
       <div className="mt-20">
         {" "}
-        <Marquee direction="left" speed={30} gradient={false}>
+        <Marquee direction="left" speed={60} gradient={false}>
           <div className="grid grid-cols-8 ">
             {limitedInstructors.map((instructor) => (
               <div key={instructor._id} className="card w-96 mr-6 ">

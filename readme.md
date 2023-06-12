@@ -54,6 +54,7 @@ Introducing a Learning Management System for photography enthusiasts. Become an 
  - [React Helmet](https://github.com/nfl/react-helmet)
  - [React Awesome Reveal](https://react-awesome-reveal.morello.dev/docs/getting-started)
  - [React FAST Marquee](https://www.react-fast-marquee.com/)
+ - [Framer Motion](https://www.framer.com/motion/)
 
 ---------
 ### Tech Stack:

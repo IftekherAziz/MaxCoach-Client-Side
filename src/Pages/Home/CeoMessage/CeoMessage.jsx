@@ -1,5 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
-import { Slide, Fade } from "react-awesome-reveal";
+import { Fade } from "react-awesome-reveal";
 
 const CeoMessage = () => {
   return (
@@ -15,16 +15,14 @@ const CeoMessage = () => {
           />
         </Fade>
         <figure className="mt-10">
-          <Slide direction="down" duration={1500}>
-            <blockquote className="text-center text-xl font-semibold leading-8 text-gray-900 sm:text-2xl sm:leading-9">
-              <p>
-                “We’ve been teaching photography since 2020.If you're new to
-                photography, have limited equipment, want to build a photography
-                career, or just have the ambition to take great photos, MaxCoach
-                is a great place to start.”
-              </p>
-            </blockquote>
-          </Slide>
+          <blockquote className="text-center text-xl font-semibold leading-8 text-gray-900 sm:text-2xl sm:leading-9">
+            <p>
+              “We’ve been teaching photography since 2020.If you're new to
+              photography, have limited equipment, want to build a photography
+              career, or just have the ambition to take great photos, MaxCoach
+              is a great place to start.”
+            </p>
+          </blockquote>
 
           <figcaption className="mt-10">
             <img
