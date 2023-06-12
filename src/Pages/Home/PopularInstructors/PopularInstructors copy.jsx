@@ -1,6 +1,11 @@
 import { useEffect, useState } from "react";
+import SwiperCore, { Navigation, Pagination } from "swiper";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/swiper.min.css";
 import { Slide } from "react-awesome-reveal";
-import Marquee from "react-fast-marquee";
+
+// Initialize Swiper modules
+SwiperCore.use([Navigation, Pagination]);
 
 const PopularInstructors = () => {
   const [instructors, setInstructors] = useState([]);
@@ -28,28 +33,40 @@ const PopularInstructors = () => {
       </Slide>
 
       <div className="mt-20">
-        {" "}
-        <Marquee direction="left" speed={30} gradient={false}>
-          <div className="grid grid-cols-8 ">
-            {limitedInstructors.map((instructor) => (
-              <div key={instructor._id} className="card w-96 mr-6 ">
+        <Swiper
+          spaceBetween={30}
+          slidesPerView={1}
+          breakpoints={{
+            640: {
+              slidesPerView: 1,
+            },
+            1024: {
+              slidesPerView: 4,
+            },
+          }}
+          navigation
+          pagination={{ clickable: true }}
+        >
+          {limitedInstructors.map((instructor) => (
+            <SwiperSlide key={instructor._id}>
+              <div className="card w-full mb-10">
                 <figure className="border border-t-slate-200 border-b-0">
                   <img
                     src={instructor.photoURL}
                     alt="Instructor"
-                    className="w-full h-[280px]"
+                    className="w-full h-[250px]"
                   />
                 </figure>
-                <div className="card-body bg-stone-50 rounded-lg rounded-t-none">
+                <div className="card-body bg-zinc-50 rounded-lg rounded-t-none">
                   <h2 className="card-title">{instructor.name}</h2>
                   <p className="text-sm text-justify">
                     Email: {instructor.email}
                   </p>
                 </div>
               </div>
-            ))}
-          </div>
-        </Marquee>
+            </SwiperSlide>
+          ))}
+        </Swiper>
       </div>
     </section>
   );
