@@ -1,9 +1,9 @@
-import { Slide } from "react-awesome-reveal";
+import { Slide, Fade } from "react-awesome-reveal";
 
 const StudentReview = () => {
   return (
     <section className="mb-12 mx-10 md:mx-0">
-       <Slide direction="down" duration={1500}>
+      <Slide direction="down" duration={1500}>
         <h2 className="text-4xl font-bold text-center mt-20 mb-5">
           Satisfied learners
         </h2>
@@ -92,11 +92,13 @@ const StudentReview = () => {
                 </svg>
               </div>
               <div className="mt-3">
-                <p className="max-w-xs mt-1 dark:text-white">
-                  My first job of scanning photos at the Memories 2 Digital
-                  Photo Scanning was fantastic. She completed the work quickly
-                  while I was waiting. Thanks for a great service..
-                </p>
+                <Fade>
+                  <p className="max-w-xs mt-1 dark:text-white">
+                    My first job of scanning photos at the Memories 2 Digital
+                    Photo Scanning was fantastic. She completed the work quickly
+                    while I was waiting. Thanks for a great service..
+                  </p>
+                </Fade>
               </div>
             </div>
           </div>
@@ -183,11 +185,13 @@ const StudentReview = () => {
                 </svg>
               </div>
               <div className="mt-3">
-                <p className="max-w-xs mt-1 dark:text-white">
-                  My first job of scanning photos at the Memories 2 Digital
-                  Photo Scanning was fantastic. She completed the work quickly
-                  while I was waiting. Thanks for a great service..
-                </p>
+                <Fade>
+                  <p className="max-w-xs mt-1 dark:text-white">
+                    My first job of scanning photos at the Memories 2 Digital
+                    Photo Scanning was fantastic. She completed the work quickly
+                    while I was waiting. Thanks for a great service..
+                  </p>
+                </Fade>
               </div>
             </div>
           </div>
@@ -274,11 +278,13 @@ const StudentReview = () => {
                 </svg>
               </div>
               <div className="mt-3">
-                <p className="max-w-xs mt-1 dark:text-white">
-                  My first job of scanning photos at the Memories 2 Digital
-                  Photo Scanning was fantastic. She completed the work quickly
-                  while I was waiting. Thanks for a great service..
-                </p>
+                <Fade>
+                  <p className="max-w-xs mt-1 dark:text-white">
+                    My first job of scanning photos at the Memories 2 Digital
+                    Photo Scanning was fantastic. She completed the work quickly
+                    while I was waiting. Thanks for a great service..
+                  </p>
+                </Fade>
               </div>
             </div>
           </div>

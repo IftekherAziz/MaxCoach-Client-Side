@@ -3,6 +3,8 @@ import PopularClasses from "./PopularClasses/PopularClasses";
 import PopularInstructors from "./PopularInstructors/PopularInstructors";
 import Slider from "./Slider/Slider";
 import StudentReview from "./StudentReview/StudentReview";
+import GetInTouch from "./GetInTouch/GetInTouch";
+
 
 const Home = () => {
   return (
@@ -14,6 +16,7 @@ const Home = () => {
       <PopularClasses></PopularClasses>
       <StudentReview></StudentReview>
       <PopularInstructors></PopularInstructors>
+      <GetInTouch></GetInTouch>
     </div>
   );
 };

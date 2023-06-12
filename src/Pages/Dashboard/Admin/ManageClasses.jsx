@@ -148,13 +148,25 @@ const ManageClasses = () => {
                     </button>
                   </td>
                   <td>
-                    {myClass.status === "denied" && (
-                      <button
-                        onClick={() => handleFeedback(myClass)}
-                        className="btn btn-sm capitalize btn-neutral text-white flex"
-                      >
-                        Feedback
-                      </button>
+                    {myClass.status === "denied" ? (
+                      <>
+                        
+                        <button
+                          onClick={() => handleFeedback(myClass)}
+                          className="btn btn-sm capitalize btn-neutral text-white flex"
+                        >
+                          Feedback
+                        </button>           
+                      </>
+                    ) : (
+                      <>
+                        <button
+                         disabled={true}
+                          className="btn btn-sm capitalize btn-neutral text-white flex"
+                        >
+                          Feedback
+                        </button>
+                      </>
                     )}
                   </td>
                 </tr>
