@@ -60,6 +60,9 @@ const Header = () => {
       ) : (
         <></>
       )}
+      <li>
+        <NavLink to="/contact">Contact Us</NavLink>
+      </li>
     </>
   );
 
