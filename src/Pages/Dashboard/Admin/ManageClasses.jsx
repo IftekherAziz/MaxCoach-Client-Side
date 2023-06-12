@@ -18,44 +18,34 @@ const ManageClasses = () => {
 
   // Handle Approve
   const handleApprove = (myClass) => {
-    fetch(`https://max-coach.vercel.app/classes/approve/${myClass._id}`, {
-      method: "PATCH",
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        if (data.modifiedCount) {
-          refetch();
-          Swal.fire({
-            position: "center-center",
-            icon: "success",
-            title: `${myClass?.className} is updated!`,
-            showConfirmButton: false,
-            timer: 1000,
-          });
-        }
-      });
+    axiosSecure.patch(`/classes/approve/${myClass._id}`).then((res) => {
+      if (res.data.modifiedCount) {
+        refetch();
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: `${myClass?.className} is approved!`,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
+    });
   };
 
   // Handle Deny
   const handleDeny = (myClass) => {
-    fetch(`https://max-coach.vercel.app/classes/deny/${myClass._id}`, {
-      method: "PATCH",
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        if (data.modifiedCount) {
-          refetch();
-          Swal.fire({
-            position: "top-end",
-            icon: "success",
-            title: `${myClass?.className} is updated!`,
-            showConfirmButton: false,
-            timer: 1000,
-          });
-        }
-      });
+    axiosSecure.patch(`/classes/deny/${myClass._id}`).then((res) => {
+      if (res.data.modifiedCount) {
+        refetch();
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: `${myClass?.className} is denied!`,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
+    });
   };
 
   // Handle Feedback:
@@ -63,36 +53,25 @@ const ManageClasses = () => {
     Swal.fire({
       input: "textarea",
       inputLabel: "Message",
-      inputPlaceholder: "Type your message here...",
+      inputPlaceholder: "Type your feedback here...",
       inputAttributes: {
-        "aria-label": "Type your message here",
+        "aria-label": "Type your feedback here",
       },
       showCancelButton: true,
     }).then((result) => {
       if (result.isConfirmed && result.value) {
-        const feedbackText = result.value;
-
-        fetch(`https://max-coach.vercel.app/classes/feedback/${myClass._id}`, {
-          method: "PATCH",
-          body: JSON.stringify({ feedback: feedbackText }),
-          headers: {
-            "Content-Type": "application/json",
-          },
-        })
-          .then((res) => res.json())
-          .then((data) => {
-            console.log(data);
-            if (data.modifiedCount) {
-              refetch();
-              Swal.fire({
-                position: "top-end",
-                icon: "success",
-                title: `${myClass?.className} is updated!`,
-                showConfirmButton: false,
-                timer: 1000,
-              });
-            }
-          });
+        axiosSecure.patch(`/classes/feedback/${myClass._id}`).then((res) => {
+          if (res.data.modifiedCount) {
+            refetch();
+            Swal.fire({
+              position: "top-end",
+              icon: "success",
+              title: `${myClass?.className} feedback sent!`,
+              showConfirmButton: false,
+              timer: 1500,
+            });
+          }
+        });
       }
     });
   };
@@ -170,6 +149,10 @@ const ManageClasses = () => {
                   </td>
                   <td>
                     <button
+                      disabled={
+                        myClass.status === "approved" ||
+                        myClass.status === "pending"
+                      }
                       onClick={() => handleFeedback(myClass)}
                       className="btn btn-sm capitalize btn-neutral text-white flex"
                     >

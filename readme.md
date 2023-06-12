@@ -52,6 +52,7 @@ Introducing a Learning Management System for photography enthusiasts. Become an 
  - [Moment Js](https://momentjs.com/)
  - [React Icons](https://react-icons.github.io/react-icons/)
  - [React Helmet](https://github.com/nfl/react-helmet)
+ - [React Awesome Reveal](https://react-awesome-reveal.morello.dev/docs/getting-started)
 
 ---------
 ### Tech Stack:

@@ -35,7 +35,7 @@ const SignUp = () => {
             photoURL: data.photoURL,
             role: "student",
           };
-          fetch("https://max-coach.vercel.app/users", {
+          fetch("http://localhost:5000/users", {
             method: "POST",
             headers: {
               "content-type": "application/json",

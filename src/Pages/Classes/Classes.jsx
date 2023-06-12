@@ -20,7 +20,7 @@ const Classes = () => {
   const [, refetch] = useEnroll();
 
   useEffect(() => {
-    fetch("https://max-coach.vercel.app/viewClasses")
+    fetch("http://localhost:5000/viewClasses")
       .then((response) => response.json())
       .then((data) => {
         setAllClasses(data);
@@ -44,7 +44,7 @@ const Classes = () => {
         availableSeats,
         email: user.email,
       };
-      fetch("https://max-coach.vercel.app/carts", {
+      fetch("http://localhost:5000/carts", {
         method: "POST",
         headers: {
           "content-type": "application/json",

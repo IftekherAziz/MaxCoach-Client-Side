@@ -12,7 +12,7 @@ const Payment = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    fetch(`https://max-coach.vercel.app/carts/${id}`)
+    fetch(`http://localhost:5000/carts/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setSelectedClass(data);

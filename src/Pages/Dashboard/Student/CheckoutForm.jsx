@@ -5,6 +5,7 @@ import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import useAuth from "../../../Hooks/useAuth";
 import useUser from "../../../Hooks/useUser";
+import useEnroll from "../../../Hooks/useEnroll";
 
 const CheckoutForm = ({ price, selectedClass }) => {
   const stripe = useStripe();
@@ -16,6 +17,7 @@ const CheckoutForm = ({ price, selectedClass }) => {
   const [axiosSecure] = useAxiosSecure();
   const [processing, setProcessing] = useState(false);
   const [transactionId, setTransactionId] = useState("");
+  const [,refetch] = useEnroll();
   const {
     _id,
     className,
@@ -102,6 +104,8 @@ const CheckoutForm = ({ price, selectedClass }) => {
             showConfirmButton: false,
             timer: 1500,
           });
+          refetch();
+
           navigate("/dashboard/enrolled-classes");
         }
       });

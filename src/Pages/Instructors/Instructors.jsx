@@ -5,7 +5,7 @@ const Instructors = () => {
   const [instructors, setInstructors] = useState([]);
 
   useEffect(() => {
-    fetch("https://max-coach.vercel.app/instructors")
+    fetch("http://localhost:5000/instructors")
       .then((response) => response.json())
       .then((data) => {
         setInstructors(data);
@@ -33,7 +33,7 @@ const Instructors = () => {
               <img
                 src={instructor.photoURL}
                 alt="Instructor"
-                className="w-full h-[220px] "
+                className="w-full h-[250px]"
               />
             </figure>
             <div className="card-body bg-zinc-50 rounded-lg rounded-t-none">

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import SwiperCore, { Navigation, Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper.min.css";
+import { Slide } from "react-awesome-reveal";
 
 // Initialize Swiper modules
 SwiperCore.use([Navigation, Pagination]);
@@ -10,7 +11,7 @@ const PopularInstructors = () => {
   const [instructors, setInstructors] = useState([]);
 
   useEffect(() => {
-    fetch("https://max-coach.vercel.app/instructors")
+    fetch("http://localhost:5000/instructors")
       .then((response) => response.json())
       .then((data) => {
         setInstructors(data);
@@ -24,12 +25,13 @@ const PopularInstructors = () => {
 
   return (
     <section className="mb-12 mx-10 md:mx-0">
-      <div>
+      <Slide direction="down" duration={1500}>
         <h2 className="text-4xl font-bold text-center mt-20 mb-5">
           Popular Instructors
         </h2>
         <hr className="w-1/6 mx-auto bg-teal-800 0 h-1" />
-      </div>
+      </Slide>
+
       <div className="mt-20">
         <Swiper
           spaceBetween={30}

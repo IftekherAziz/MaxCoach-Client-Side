@@ -2,7 +2,7 @@ import axios from "axios";
 
 const useAxios = () => {
   const basicAxios = axios.create({
-    baseURL: "https://max-coach.vercel.app/",
+    baseURL: "http://localhost:5000/",
   });
   return [basicAxios];
 };

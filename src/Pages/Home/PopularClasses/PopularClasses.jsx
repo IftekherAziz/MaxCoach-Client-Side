@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxios from "../../../Hooks/useAxios";
+import { Slide } from "react-awesome-reveal";
 
 const PopularClasses = () => {
   const [basicAxios] = useAxios();
@@ -11,9 +12,12 @@ const PopularClasses = () => {
   return (
     <section className=" mx-10 md:mx-0">
       <div>
-        <h2 className="text-4xl font-bold text-center mt-20 mb-5">
-          Popular Classes
-        </h2>
+       
+        <Slide direction="down" duration={1500}>
+          <h2 className="text-4xl font-bold text-center mt-20 mb-5">
+            Popular Classes
+          </h2>
+        </Slide>
         <hr className="w-1/6 mx-auto bg-teal-800 h-1" />
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mt-20">

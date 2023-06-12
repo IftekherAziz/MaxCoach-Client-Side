@@ -1,4 +1,4 @@
-import { Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import {
   FaUsers,
@@ -40,7 +40,15 @@ const DashboardLayout = () => {
           <label htmlFor="my-drawer" className="drawer-overlay"></label>
           <ul className="menu p-4 w-80   ">
             {/* Sidebar content here */}
-            <div className="text-2xl font-medium ml-1">Dashboard</div>
+            <div className="text-2xl font-medium ml-1">
+              <Link to="/">
+                <img
+                  className="bg-white p-3 rounded"
+                  src="https://i.ibb.co/wp4n6bT/logo.png"
+                  alt="Dashboard"
+                />
+              </Link>
+            </div>
             <div className="divider"></div>
             {role === "admin" ? (
               <>
@@ -80,7 +88,7 @@ const DashboardLayout = () => {
                     <FaBookmark></FaBookmark>Selected Classes
                   </NavLink>
                 </li>
-               {/*  <li className="mb-1">
+                {/*  <li className="mb-1">
                   <NavLink to="/dashboard/payment">
                     <FaDonate></FaDonate>Make Payment
                   </NavLink>
@@ -108,7 +116,7 @@ const DashboardLayout = () => {
               </li>
               <li className="mb-1">
                 <NavLink to="/">
-                  <FaHome></FaHome>MaxCoach Home
+                  <FaHome></FaHome>Back Home
                 </NavLink>
               </li>
             </>
