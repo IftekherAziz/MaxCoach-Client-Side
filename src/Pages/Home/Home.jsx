@@ -4,7 +4,7 @@ import PopularInstructors from "./PopularInstructors/PopularInstructors";
 import Slider from "./Slider/Slider";
 import StudentReview from "./StudentReview/StudentReview";
 import GetInTouch from "./GetInTouch/GetInTouch";
-
+import CeoMessage from "./CeoMessage/CeoMessage";
 
 const Home = () => {
   return (
@@ -14,8 +14,9 @@ const Home = () => {
       </Helmet>
       <Slider></Slider>
       <PopularClasses></PopularClasses>
-      <StudentReview></StudentReview>
+      <CeoMessage></CeoMessage>
       <PopularInstructors></PopularInstructors>
+      <StudentReview></StudentReview>
       <GetInTouch></GetInTouch>
     </div>
   );

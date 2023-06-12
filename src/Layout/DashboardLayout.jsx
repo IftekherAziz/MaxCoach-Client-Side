@@ -9,6 +9,7 @@ import {
   FaBookmark,
   FaDonate,
   FaHome,
+  FaCommentAlt,
 } from "react-icons/fa";
 import useUser from "../Hooks/useUser";
 
@@ -112,6 +113,11 @@ const DashboardLayout = () => {
               <li className="mb-1">
                 <NavLink to="/classes">
                   <FaSchool></FaSchool>All Classes
+                </NavLink>
+              </li>
+              <li className="mb-1">
+                <NavLink to="/contact">
+                  <FaCommentAlt></FaCommentAlt>Contact Us
                 </NavLink>
               </li>
               <li className="mb-1">
