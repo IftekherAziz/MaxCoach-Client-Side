@@ -17,11 +17,10 @@ const SignUp = () => {
   } = useForm();
 
   const { createUser, updateUserProfile } = useContext(AuthContext);
-
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-
+ 
   const onSubmit = (data) => {
     createUser(data.email, data.password)
       .then((userCredential) => {

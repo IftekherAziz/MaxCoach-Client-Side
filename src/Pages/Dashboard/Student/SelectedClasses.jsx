@@ -2,34 +2,38 @@ import { Helmet } from "react-helmet";
 import useEnroll from "../../../Hooks/useEnroll";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 
 const SelectedClasses = () => {
   const [cart, refetch] = useEnroll();
+  const [axiosSecure] = useAxiosSecure();
 
-  const handleDelete = (selectedClass) => {
-    Swal.fire({
-      title: "Are you sure?",
-      text: "You won't be able to revert this!",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        fetch(`http://localhost:5000/carts/${selectedClass._id}`, {
-          method: "DELETE",
-        })
-          .then((res) => res.json())
-          .then((data) => {
-            if (data.deletedCount > 0) {
-              refetch();
-              Swal.fire("Deleted!", "Your class has been removed.", "success");
-            }
-          });
-      }
-    });
-  };
+ const handleDelete = (selectedClass) => {
+   Swal.fire({
+     title: "Are you sure?",
+     text: "You won't be able to revert this!",
+     icon: "warning",
+     showCancelButton: true,
+     confirmButtonColor: "#3085d6",
+     cancelButtonColor: "#d33",
+     confirmButtonText: "Yes, delete it!",
+   }).then((result) => {
+     if (result.isConfirmed) {
+       axiosSecure
+         .delete(`/carts/${selectedClass._id}`)
+         .then((response) => response.data)
+         .then((data) => {
+           if (data.deletedCount > 0) {
+             refetch();
+             Swal.fire("Deleted!", "Your class has been removed.", "success");
+           }
+         })
+         .catch((error) => {
+           console.error(error);
+         });
+     }
+   });
+ };
 
   return (
     <div className="max-w-xs mx-auto md:max-w-full">

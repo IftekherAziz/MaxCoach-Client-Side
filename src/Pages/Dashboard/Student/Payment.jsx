@@ -5,19 +5,25 @@ import { Elements } from "@stripe/react-stripe-js";
 import { useParams } from "react-router-dom";
 import { useState } from "react";
 import { useEffect } from "react";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 
 const stripePromise = loadStripe(import.meta.env.VITE_Payment_Gateway_PK);
 const Payment = () => {
   const [selectedClass, setSelectedClass] = useState([]);
   const { id } = useParams();
+  const [axiosSecure] = useAxiosSecure();
 
-  useEffect(() => {
-    fetch(`http://localhost:5000/carts/${id}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setSelectedClass(data);
-      });
-  }, []);
+ useEffect(() => {
+   axiosSecure
+     .get(`/carts/${id}`)
+     .then((response) => response.data)
+     .then((data) => {
+       setSelectedClass(data);
+     })
+     .catch((error) => {
+       console.error(error);
+     });
+ }, []);
 
   return (
     <div className="mx-6 md:mx-0 ">

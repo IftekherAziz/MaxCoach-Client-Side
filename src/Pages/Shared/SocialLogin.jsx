@@ -24,7 +24,7 @@ const SocialLogin = () => {
       };
 
       // Save user data on MongoDB:
-      fetch("http://localhost:5000/users", {
+      fetch("https://max-coach.vercel.app/users", {
         method: "POST",
         headers: {
           "content-type": "application/json",

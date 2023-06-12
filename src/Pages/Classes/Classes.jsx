@@ -5,12 +5,11 @@ import useAuth from "../../Hooks/useAuth";
 import Swal from "sweetalert2";
 import { useLocation, useNavigate } from "react-router-dom";
 import useEnroll from "../../Hooks/useEnroll";
-
+import useAxiosSecure from "../../Hooks/useAxiosSecure"
 const Classes = () => {
   const [allClasses, setAllClasses] = useState([]);
 
   const { user } = useAuth();
-
   const [userFromDB] = useUser();
   const role = userFromDB?.role;
 
@@ -18,9 +17,10 @@ const Classes = () => {
   const location = useLocation();
 
   const [, refetch] = useEnroll();
+  const [axiosSecure] = useAxiosSecure();
 
   useEffect(() => {
-    fetch("http://localhost:5000/viewClasses")
+    fetch("https://max-coach.vercel.app/viewClasses")
       .then((response) => response.json())
       .then((data) => {
         setAllClasses(data);
@@ -44,14 +44,9 @@ const Classes = () => {
         availableSeats,
         email: user.email,
       };
-      fetch("http://localhost:5000/carts", {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(selectedClass),
-      })
-        .then((res) => res.json())
+      axiosSecure
+        .post("/carts", selectedClass)
+        .then((response) => response.data)
         .then((data) => {
           if (data.insertedId) {
             refetch();
@@ -63,6 +58,9 @@ const Classes = () => {
               timer: 1500,
             });
           }
+        })
+        .catch((error) => {
+          console.error(error);
         });
     } else {
       Swal.fire({
