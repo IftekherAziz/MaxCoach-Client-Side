@@ -88,7 +88,7 @@ const ManageClasses = () => {
       </div>
       <div>
         <div className="overflow-x-auto">
-          <table className="table border mb-10">
+          <table className="table border  mb-10">
             <thead className="bg-zinc-50">
               <tr>
                 <th>No</th>
@@ -148,16 +148,14 @@ const ManageClasses = () => {
                     </button>
                   </td>
                   <td>
-                    <button
-                      disabled={
-                        myClass.status === "approved" ||
-                        myClass.status === "pending"
-                      }
-                      onClick={() => handleFeedback(myClass)}
-                      className="btn btn-sm capitalize btn-neutral text-white flex"
-                    >
-                      Feedback
-                    </button>
+                    {myClass.status === "denied" && (
+                      <button
+                        onClick={() => handleFeedback(myClass)}
+                        className="btn btn-sm capitalize btn-neutral text-white flex"
+                      >
+                        Feedback
+                      </button>
+                    )}
                   </td>
                 </tr>
               ))}
