@@ -32,10 +32,8 @@ const StudentReview = () => {
             </div>
             <div className="ml-6">
               <p className="flex items-baseline">
-                <span className="font-bold text-gray-600 dark:text-gray-200">
-                  Rida Dawson
-                </span>
-                <span className="ml-2 text-sm text-gray-500 dark:text-gray-300">
+                <span className="font-bold text-gray-600 ">Rida Dawson</span>
+                <span className="ml-2 text-sm text-gray-500 ">
                   1 months ago
                 </span>
               </p>
@@ -93,10 +91,11 @@ const StudentReview = () => {
               </div>
               <div className="mt-3">
                 <Fade>
-                  <p className="max-w-xs mt-1 dark:text-white">
-                    My first job of scanning photos at the Memories 2 Digital
-                    Photo Scanning was fantastic. She completed the work quickly
-                    while I was waiting. Thanks for a great service..
+                  <p className="max-w-sm mt-2 text-sm text-justify ">
+                    The MaxCoach course transcends the formal classroom
+                    constraints when it comes to learning. There is a welcoming
+                    warmth that draws you in and stays with you as you go from
+                    lesson to lesson...
                   </p>
                 </Fade>
               </div>
@@ -125,10 +124,8 @@ const StudentReview = () => {
             </div>
             <div className="ml-6">
               <p className="flex items-baseline">
-                <span className="font-bold text-gray-600 dark:text-gray-200">
-                  Taylor Sears
-                </span>
-                <span className="ml-2 text-sm text-gray-500 dark:text-gray-300">
+                <span className="font-bold text-gray-600 ">Taylor Sears</span>
+                <span className="ml-2 text-sm text-gray-500 ">
                   2 months ago
                 </span>
               </p>
@@ -186,10 +183,10 @@ const StudentReview = () => {
               </div>
               <div className="mt-3">
                 <Fade>
-                  <p className="max-w-xs mt-1 dark:text-white">
-                    My first job of scanning photos at the Memories 2 Digital
-                    Photo Scanning was fantastic. She completed the work quickly
-                    while I was waiting. Thanks for a great service..
+                  <p className="max-w-sm mt-2 text-sm text-justify ">
+                    MaxCoach is hands down the best source for learning. I was
+                    cautious of all online learning centers, but I truly feel
+                    that I am receiving the best photography education possible!
                   </p>
                 </Fade>
               </div>
@@ -279,10 +276,10 @@ const StudentReview = () => {
               </div>
               <div className="mt-3">
                 <Fade>
-                  <p className="max-w-xs mt-1 dark:text-white">
-                    My first job of scanning photos at the Memories 2 Digital
-                    Photo Scanning was fantastic. She completed the work quickly
-                    while I was waiting. Thanks for a great service..
+                  <p className="max-w-sm mt-2 text-sm text-justify">
+                    It still feels as though I receive individualized attention!
+                    It is very structured and based upon core foundations that every
+                    photographer (every level) should know...
                   </p>
                 </Fade>
               </div>

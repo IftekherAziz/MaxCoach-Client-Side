@@ -12,18 +12,17 @@ const PopularClasses = () => {
   return (
     <section className=" mx-10 md:mx-0">
       <div>
-       
         <Slide direction="down" duration={1500}>
           <h2 className="text-4xl font-bold text-center mt-20 mb-5">
             Popular Classes
           </h2>
+          <hr className="w-1/6 mx-auto bg-teal-800 h-1" />
         </Slide>
-        <hr className="w-1/6 mx-auto bg-teal-800 h-1" />
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mt-20">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-20">
         {popularClasses.map((popularClass) => (
           <div key={popularClass._id}>
-            <div className="card w-full bg-base-100 shadow-md mb-10">
+            <div className="card w-full bg-base-100 shadow-md mb-6">
               <figure className="">
                 <img
                   src={popularClass.image}
