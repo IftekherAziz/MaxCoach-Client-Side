@@ -6,6 +6,7 @@
 
 Introducing a Learning Management System for photography enthusiasts. Become an instructor, create classes, and teach various photography courses to students. Earn money while sharing your passion. Students can easily purchase their favorite courses and start learning. We accept all major cards (MasterCard, VISA, American Express) via Stripe for secure payments. Join our community and explore the world of photography today.
 
+---------
 ### Features:
 
 - Light/dark mode toggle for complete website
@@ -36,6 +37,8 @@ Introducing a Learning Management System for photography enthusiasts. Become an 
 - Pay selected class using stripe payment
 - View all paid classes in enrolled classes
 - Check all payment histroy
+
+---------
 ### Used packages
 
  - [Axios](https://axios-http.com/docs/intro)
@@ -50,13 +53,14 @@ Introducing a Learning Management System for photography enthusiasts. Become an 
  - [React Icons](https://react-icons.github.io/react-icons/)
  - [React Helmet](https://github.com/nfl/react-helmet)
 
-
+---------
 ### Tech Stack:
 
 **Client:** Html, Tailwind CSS, DaisyUI, JavaScript, React
 
 **Server:** Node, Express , MongoDB
 
+---------
 
 
 
@@ -64,7 +68,7 @@ Introducing a Learning Management System for photography enthusiasts. Become an 
 
 Live: https://max-coach.web.app/
 
-
+---------
 
 
 ### Support:
