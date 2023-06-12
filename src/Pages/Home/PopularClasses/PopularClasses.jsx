@@ -1,11 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
-import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import useAxios from "../../../Hooks/useAxios";
 
 const PopularClasses = () => {
-  const [axiosSecure] = useAxiosSecure();
+  const [basicAxios] = useAxios();
 
   const { data: popularClasses = [] } = useQuery(["popular"], async () => {
-    const res = await axiosSecure.get("/classes/popular");
+    const res = await basicAxios.get("/classes/popular");
     return res.data;
   });
   return (

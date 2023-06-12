@@ -17,7 +17,7 @@ const SelectedClasses = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/carts/${selectedClass._id}`, {
+        fetch(`https://max-coach.vercel.app/carts/${selectedClass._id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -38,7 +38,7 @@ const SelectedClasses = () => {
       </Helmet>
       <div className="mb-6 shadow-md py-5 bg-zinc-50">
         <h2 className="text-center text-2xl font-bold  text-teal-800">
-          Your have selected {cart.length} class
+          Selected Class: {cart.length}
         </h2>
       </div>
       <div className="overflow-x-auto">
@@ -50,7 +50,6 @@ const SelectedClasses = () => {
               <th>Class Image</th>
               <th>Class Name</th>
               <th>Instructor Email</th>
-              <th>Available Seats</th>
               <th>Price</th>
               <th>Pay Now</th>
               <th>Action</th>
@@ -68,7 +67,6 @@ const SelectedClasses = () => {
                 </td>
                 <td className="font-semibold">{selectedClass.className}</td>
                 <td>{selectedClass.instructorEmail}</td>
-                <td className="text-center">{selectedClass.availableSeats}</td>
                 <td>${selectedClass.price}</td>
                 <td>
                   <Link to={`/dashboard/payment/${selectedClass._id}`}>

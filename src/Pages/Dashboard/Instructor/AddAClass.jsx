@@ -27,6 +27,7 @@ const AddAClass = () => {
     })
       .then((res) => res.json())
       .then((imgResponse) => {
+        
         const imgURL = imgResponse.data.display_url;
         const {
           className,
@@ -39,15 +40,16 @@ const AddAClass = () => {
           className,
           instructorName,
           instructorEmail,
-          availableSeats,
+          availableSeats: parseInt(availableSeats),
           price,
           image: imgURL,
-          status: "pending",
+          status: "Pending",
           enrolled_students: 0,
           feedback: "",
         };
         axiosSecure.post("/classes", newItem).then((res) => {
           if (res.data.insertedId) {
+          
             reset();
             Swal.fire({
               position: "center",

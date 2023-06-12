@@ -1,14 +1,16 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { useEffect, useState } from "react";
-import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import useAuth from "../../../Hooks/useAuth";
+import useUser from "../../../Hooks/useUser";
 
 const CheckoutForm = ({ price, selectedClass }) => {
   const stripe = useStripe();
   const elements = useElements();
   const { user } = useAuth();
+  const [userFromDB] = useUser();
   const [cardError, setCardError] = useState("");
   const [clientSecret, setClientSecret] = useState("");
   const [axiosSecure] = useAxiosSecure();
@@ -17,6 +19,7 @@ const CheckoutForm = ({ price, selectedClass }) => {
   const {
     _id,
     className,
+    instructorName,
     instructorEmail,
     image,
     availableSeats,
@@ -79,17 +82,19 @@ const CheckoutForm = ({ price, selectedClass }) => {
         transactionId: paymentIntent.id,
         price,
         date: new Date(),
-        status: "service pending",
+        status: "Service Pending",
         className,
+        instructorName,
         instructorEmail,
         image,
         availableSeats,
         selectedClassId,
         cart_id: _id,
+        user_id: userFromDB._id,
       };
       axiosSecure.post("/payments", payment).then((res) => {
         // console.log(res.data);
-        if (res.data.insertedId) {
+        if (res.data.result.insertedId) {
           Swal.fire({
             position: "top-end",
             icon: "success",
@@ -104,10 +109,7 @@ const CheckoutForm = ({ price, selectedClass }) => {
   };
   return (
     <>
-      <form
-        onSubmit={handleSubmit}
-        className="w-full md:w-2/3 mx-auto  p-10  "
-      >
+      <form onSubmit={handleSubmit} className="w-full md:w-2/3 mx-auto  p-10  ">
         <CardElement
           options={{
             style: {

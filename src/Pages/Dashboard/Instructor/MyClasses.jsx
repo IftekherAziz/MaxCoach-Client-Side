@@ -56,7 +56,7 @@ const MyClasses = () => {
                   </th>
                   <td>{myClass.className}</td>
                   <td className="text-center">{myClass.enrolled_students}</td>
-                  <td>{myClass.status}</td>
+                  <td className="capitalize">{myClass.status}</td>
                   <td>{myClass.price}</td>
                   <td>{myClass.feedback}</td>
                 {/* TO DO: UPDATE MY CLASS */}

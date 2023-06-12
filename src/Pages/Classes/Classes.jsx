@@ -20,7 +20,7 @@ const Classes = () => {
   const [, refetch] = useEnroll();
 
   useEffect(() => {
-    fetch("http://localhost:5000/viewClasses")
+    fetch("https://max-coach.vercel.app/viewClasses")
       .then((response) => response.json())
       .then((data) => {
         setAllClasses(data);
@@ -44,7 +44,7 @@ const Classes = () => {
         availableSeats,
         email: user.email,
       };
-      fetch("http://localhost:5000/carts", {
+      fetch("https://max-coach.vercel.app/carts", {
         method: "POST",
         headers: {
           "content-type": "application/json",
@@ -96,7 +96,7 @@ const Classes = () => {
           <div
             key={classes._id}
             className={`card w-full bg-base-100 shadow-md mb-10 ${
-              classes.availableSeats - classes.enrolled_students === 0
+              classes.availableSeats == classes.enrolled_students
                 ? "bg-red-600 text-white"
                 : ""
             }`}
@@ -114,9 +114,7 @@ const Classes = () => {
               <div className="flex items-center justify-center lg:justify-start">
                 <p className="text-sm">
                   Instructor :{" "}
-                  <span className=" font-medium">
-                    {classes.instructorName}
-                  </span>
+                  <span className=" font-medium">{classes.instructorName}</span>
                 </p>
                 <p className="text-sm">
                   Enrolled:{" "}
@@ -127,23 +125,22 @@ const Classes = () => {
               </div>
               <div className="flex items-center justify-center gap-x-6 lg:justify-start">
                 <p className="text-sm">
-                  Available Seats :{" "}
-                  <span className="font-medium">
-                    {classes.availableSeats - classes.enrolled_students}
-                  </span>
+                  Total Seats :{" "}
+                  <span className="font-medium">{classes.availableSeats}</span>
                 </p>
                 <p className="text-sm">
-                  Price:{" "}
-                  <span className="font-medium">
-                    ${classes.price}
-                  </span>
+                  Price: <span className="font-medium">${classes.price}</span>
                 </p>
               </div>
               <span className="divider"></span>
               <button
                 onClick={() => handleEnrollNow(classes)}
                 className="btn btn-neutral"
-                disabled={role === "admin" || role === "instructor"}
+                disabled={
+                  role === "admin" ||
+                  role === "instructor" ||
+                  classes.availableSeats == classes.enrolled_students
+                }
               >
                 Enroll Now
               </button>

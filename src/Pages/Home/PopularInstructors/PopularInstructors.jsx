@@ -10,7 +10,7 @@ const PopularInstructors = () => {
   const [instructors, setInstructors] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/instructors")
+    fetch("https://max-coach.vercel.app/instructors")
       .then((response) => response.json())
       .then((data) => {
         setInstructors(data);

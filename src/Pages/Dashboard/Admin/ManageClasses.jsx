@@ -18,7 +18,7 @@ const ManageClasses = () => {
 
   // Handle Approve
   const handleApprove = (myClass) => {
-    fetch(`http://localhost:5000/classes/approve/${myClass._id}`, {
+    fetch(`https://max-coach.vercel.app/classes/approve/${myClass._id}`, {
       method: "PATCH",
     })
       .then((res) => res.json())
@@ -39,7 +39,7 @@ const ManageClasses = () => {
 
   // Handle Deny
   const handleDeny = (myClass) => {
-    fetch(`http://localhost:5000/classes/deny/${myClass._id}`, {
+    fetch(`https://max-coach.vercel.app/classes/deny/${myClass._id}`, {
       method: "PATCH",
     })
       .then((res) => res.json())
@@ -72,7 +72,7 @@ const ManageClasses = () => {
       if (result.isConfirmed && result.value) {
         const feedbackText = result.value;
 
-        fetch(`http://localhost:5000/classes/feedback/${myClass._id}`, {
+        fetch(`https://max-coach.vercel.app/classes/feedback/${myClass._id}`, {
           method: "PATCH",
           body: JSON.stringify({ feedback: feedbackText }),
           headers: {

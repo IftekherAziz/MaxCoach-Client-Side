@@ -65,7 +65,7 @@ const AuthProvider = ({ children }) => {
       // get and set jwt token:
       if (currentUser) {
         axios
-          .post("http://localhost:5000/jwt", {
+          .post("https://max-coach.vercel.app/jwt", {
             email: currentUser.email,
           })
           .then((data) => {
