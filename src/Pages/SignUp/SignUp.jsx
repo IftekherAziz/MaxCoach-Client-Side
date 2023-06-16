@@ -20,7 +20,8 @@ const SignUp = () => {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
- 
+
+
   const onSubmit = (data) => {
     createUser(data.email, data.password)
       .then((userCredential) => {
@@ -34,7 +35,7 @@ const SignUp = () => {
             photoURL: data.photoURL,
             role: "student",
           };
-          fetch("http://localhost:5000/users", {
+          fetch("https://max-coach.vercel.app/users", {
             method: "POST",
             headers: {
               "content-type": "application/json",
